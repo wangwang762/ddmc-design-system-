@@ -57,3 +57,7 @@ export type { TabBarProps, TabBarTab, TabBarItem, TabDisplayType } from './compo
 // ─── 商品卡片相关 ─────────────────────────────────────────────
 export { 商品图标签单 } from './components/商品图标签-单'
 export type { 商品图标签单Props } from './components/商品图标签-单'
+
+// ─── 商品卡片 ──────────────────────────────────────────────────
+export { 商品卡片 } from './components/商品卡片'
+export type { 商品卡片Props, 商品卡片布局, 营销标签, 营销标签类型, 标题前标签 } from './components/商品卡片'

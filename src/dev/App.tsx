@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { 商品卡片 } from '../components/商品卡片'
 import { 按钮 } from '../components/按钮'
 import { 购物车按钮 } from '../components/购物车按钮'
 import { 加减号 } from '../components/加减号'
@@ -316,6 +317,121 @@ export const App: React.FC = () => {
         </Row>
         <Row label="确认类 — 双按钮文字过长（垂直）">
           <按钮 尺寸="Small" 类型="Secondary" onClick={() => setDialog长文字(true)}>打开</按钮>
+        </Row>
+      </Section>
+
+      {/* ── 商品卡片 ─────────────────────────────────── */}
+      <Section title="商品卡片 (Product Card)">
+        <Row label="单列商卡">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <商品卡片
+              布局="单列"
+              图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200"
+              标题="气泡水500ml 整箱装"
+              价格="38.76"
+              单位="/份"
+              标题前标签={[{ 文字: '疯抢', 颜色: 'red' }]}
+              星级
+              利益点="利益点｜利益点｜利益点"
+              营销标签={[
+                { 类型: '绿色底', 文字: '明日送达' },
+                { 类型: '粉红底', 文字: '特惠' },
+                { 类型: '省', 文字: '省1.8元' },
+              ]}
+              下单数="2.1万人已下单"
+              榜单横幅="新鲜水果榜第1名"
+              购物车badge={3}
+            />
+          </div>
+        </Row>
+        <Row label="单列定高商卡">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <商品卡片
+              布局="单列定高"
+              图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200"
+              标题="帝王蟹 900g"
+              价格="238.00"
+              单位="/只"
+              标题前标签={[{ 文字: '疯抢', 颜色: 'red' }, { 文字: '美麒麟', 颜色: 'dark-red' }]}
+              推荐理由="免费宰杀｜高蛋白｜干净无沙"
+              榜单标签="水产海鲜榜 第1名"
+              购物车badge={1}
+            />
+          </div>
+        </Row>
+        <Row label="双列商卡">
+          <div style={{ display: 'flex', gap: 11, backgroundColor: '#f5f5f5', padding: 9 }}>
+            <商品卡片
+              布局="双列"
+              图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300"
+              标题="气泡水500ml 整箱装"
+              价格="38.76"
+              单位="/份"
+              星级
+              利益点="利益点｜利益点｜利益点"
+              营销标签={[
+                { 类型: '绿色底', 文字: '明日送达' },
+                { 类型: '省', 文字: '省1.8元' },
+              ]}
+              下单数="2.1万人已下单"
+              榜单横幅="新鲜水果榜第1名"
+              购物车badge={5}
+            />
+            <商品卡片
+              布局="双列"
+              图片="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=300"
+              标题="有机苹果 5斤装"
+              价格="29.90"
+              单位="/箱"
+              营销标签={[{ 类型: '粉红底', 文字: '限时抢' }]}
+            />
+          </div>
+        </Row>
+        <Row label="双列定高商卡">
+          <div style={{ display: 'flex', gap: 11, backgroundColor: '#f5f5f5', padding: 9 }}>
+            <商品卡片
+              布局="双列定高"
+              图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300"
+              标题="气泡水500ml 整箱"
+              价格="38.76"
+              单位="/份"
+              标题前标签={[{ 文字: '疯抢', 颜色: 'red' }, { 文字: '美麒麟', 颜色: 'dark-red' }]}
+              星级
+              利益点="免费宰杀｜干净无沙"
+              营销标签={[
+                { 类型: '绿色底', 文字: '明日送达' },
+                { 类型: '省', 文字: '省1.8元' },
+              ]}
+            />
+            <商品卡片
+              布局="双列定高"
+              图片="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=300"
+              标题="有机苹果 5斤装"
+              价格="29.90"
+              单位="/箱"
+              营销标签={[{ 类型: '粉红底', 文字: '特惠' }]}
+            />
+          </div>
+        </Row>
+        <Row label="三列商卡">
+          <div style={{ display: 'flex', gap: 8, backgroundColor: '#f5f5f5', padding: 9 }}>
+            {[
+              { 标题: '气泡水500ml', 价格: '38.76', tags: [{ 类型: '绿色底' as const, 文字: '明日送达' }] },
+              { 标题: '有机苹果5斤', 价格: '29.90', tags: [{ 类型: '粉红底' as const, 文字: '特惠' }] },
+              { 标题: '精品猕猴桃', 价格: '18.80', tags: [] },
+            ].map((item, i) => (
+              <商品卡片
+                key={i}
+                布局="三列"
+                图片={`https://images.unsplash.com/photo-156047235${i}-b33ff0c44a43?w=200`}
+                标题={item.标题}
+                价格={item.价格}
+                单位="/份"
+                营销标签={item.tags}
+                购物车badge={i === 0 ? 2 : 0}
+              />
+            ))}
+          </div>
         </Row>
       </Section>
 
