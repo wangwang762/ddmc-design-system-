@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { 商品卡片 } from '../components/商品卡片'
 import { 按钮 } from '../components/按钮'
 import { 购物车按钮 } from '../components/购物车按钮'
 import { 加减号 } from '../components/加减号'
@@ -316,6 +317,176 @@ export const App: React.FC = () => {
         </Row>
         <Row label="确认类 — 双按钮文字过长（垂直）">
           <按钮 尺寸="Small" 类型="Secondary" onClick={() => setDialog长文字(true)}>打开</按钮>
+        </Row>
+      </Section>
+
+      {/* ── 商品卡片 ─────────────────────────────────── */}
+      <Section title="商品卡片 (Product Card)">
+        <Row label="单列商卡">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <商品卡片
+              布局="单列"
+              图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200"
+              标题="气泡水500ml 整箱装"
+              价格="38.76"
+              单位="/份"
+              标题前标签={[{ 文字: '疯抢', 颜色: 'red' }]}
+              星级
+              利益点="利益点｜利益点｜利益点"
+              营销标签={[
+                { 类型: '绿色底', 文字: '明日送达' },
+                { 类型: '粉红底', 文字: '特惠' },
+                { 类型: '省', 文字: '省1.8元' },
+              ]}
+              下单数="2.1万人已下单"
+              榜单横幅="新鲜水果榜第1名"
+              购物车badge={3}
+            />
+          </div>
+        </Row>
+        <Row label="双列商卡">
+          <div style={{ width: 390, display: 'flex', gap: 11, backgroundColor: '#f5f5f5', padding: '9px 12px', alignItems: 'flex-start' }}>
+            <商品卡片
+              布局="双列"
+              图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300"
+              标题="气泡水500ml 整箱装"
+              价格="38.76"
+              单位="/份"
+              星级
+              利益点="利益点｜利益点｜利益点"
+              营销标签={[
+                { 类型: '绿色底', 文字: '明日送达' },
+                { 类型: '省', 文字: '省1.8元' },
+              ]}
+              下单数="2.1万人已下单"
+              榜单横幅="新鲜水果榜第1名"
+              购物车badge={5}
+              className="flex-1 min-w-0"
+            />
+            <商品卡片
+              布局="双列"
+              图片="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=300"
+              标题="有机苹果 5斤装"
+              价格="29.90"
+              单位="/箱"
+              营销标签={[{ 类型: '粉红底', 文字: '限时抢' }]}
+              className="flex-1 min-w-0"
+            />
+          </div>
+        </Row>
+        <Row label="三列商卡">
+          <div style={{ width: 390, display: 'flex', gap: 8, backgroundColor: '#f5f5f5', padding: '9px 12px' }}>
+            <商品卡片
+              布局="三列"
+              图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200"
+              标题="气泡水500ml"
+              价格="38.76"
+              单位="/份"
+              营销标签={[{ 类型: '绿色底', 文字: '明日送达' }]}
+              购物车badge={2}
+              className="flex-1 min-w-0"
+            />
+            <商品卡片
+              布局="三列"
+              图片="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=200"
+              标题="有机苹果5斤装"
+              价格="29.90"
+              单位="/箱"
+              营销标签={[{ 类型: '粉红底', 文字: '特惠' }]}
+              className="flex-1 min-w-0"
+            />
+            <商品卡片
+              布局="三列"
+              图片="https://images.unsplash.com/photo-1542838132-92c53300491e?w=200"
+              标题="精品猕猴桃"
+              价格="18.80"
+              单位="/份"
+              营销标签={[]}
+              className="flex-1 min-w-0"
+            />
+          </div>
+        </Row>
+        <Row label="泳道商卡（横向滚动）">
+          <div style={{ width: 390, overflowX: 'auto', backgroundColor: '#f5f5f5', padding: '9px 12px' }}>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <商品卡片
+                布局="泳道"
+                图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200"
+                标题="气泡水500ml整箱"
+                价格="10.99"
+                原价="40.76"
+                单位="/份"
+                营销标签={[{ 类型: '绿色底', 文字: '明日送达' }]}
+                购物车badge={2}
+              />
+              <商品卡片
+                布局="泳道"
+                图片="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=200"
+                标题="有机苹果5斤装"
+                价格="19.90"
+                原价="35.00"
+                单位="/箱"
+                营销标签={[{ 类型: '粉红底', 文字: '特惠' }]}
+              />
+              <商品卡片
+                布局="泳道"
+                图片="https://images.unsplash.com/photo-1542838132-92c53300491e?w=200"
+                标题="精品猕猴桃"
+                价格="8.80"
+                原价="25.00"
+                单位="/份"
+                营销标签={[{ 类型: '省', 文字: '省16.2元' }]}
+              />
+              <商品卡片
+                布局="泳道"
+                图片="https://images.unsplash.com/photo-1557800636-894a64c1696f?w=200"
+                标题="新鲜草莓1斤"
+                价格="12.50"
+                原价="20.00"
+                单位="/盒"
+                营销标签={[]}
+              />
+            </div>
+          </div>
+        </Row>
+        <Row label="新人专区商卡（横向滚动）">
+          <div style={{ width: 390, overflowX: 'auto', backgroundColor: '#f5f5f5', padding: '9px 12px' }}>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <商品卡片
+                布局="新人专区商卡"
+                图片="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200"
+                标题="气泡水500ml"
+                价格="10.99"
+                原价="40.76"
+                单位="/份"
+                购物车badge={1}
+              />
+              <商品卡片
+                布局="新人专区商卡"
+                图片="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=200"
+                标题="有机苹果5斤"
+                价格="19.90"
+                原价="35.00"
+                单位="/箱"
+              />
+              <商品卡片
+                布局="新人专区商卡"
+                图片="https://images.unsplash.com/photo-1542838132-92c53300491e?w=200"
+                标题="精品猕猴桃"
+                价格="8.80"
+                原价="25.00"
+                单位="/份"
+              />
+              <商品卡片
+                布局="新人专区商卡"
+                图片="https://images.unsplash.com/photo-1557800636-894a64c1696f?w=200"
+                标题="新鲜草莓1斤"
+                价格="12.50"
+                原价="20.00"
+                单位="/盒"
+              />
+            </div>
+          </div>
         </Row>
       </Section>
 
