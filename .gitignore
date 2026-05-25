@@ -1,0 +1,15 @@
+node_modules
+dist
+.DS_Store
+*.local
+
+# iCloud
+.icloud
+*.icloud
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+Thumbs.db

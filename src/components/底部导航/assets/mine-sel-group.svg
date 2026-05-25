@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 11.1628 11.1628" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="&#231;&#188;&#150;&#231;&#187;&#132;">
+<g id="&#229;&#189;&#162;&#231;&#138;&#182;&#231;&#187;&#147;&#229;&#144;&#136;&#229;&#164;&#135;&#228;&#187;&#189;">
+</g>
+<mask id="mask0_0_7" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="12" height="12">
+<circle id="&#229;&#189;&#162;&#231;&#138;&#182;&#231;&#187;&#147;&#229;&#144;&#136;&#229;&#164;&#135;&#228;&#187;&#189;_2" cx="5.5814" cy="5.5814" r="4.8314" fill="var(--fill-0, white)" stroke="var(--stroke-0, white)" stroke-width="1.5"/>
+</mask>
+<g mask="url(#mask0_0_7)">
+<circle id="&#230;&#164;&#173;&#229;&#156;&#134;&#229;&#189;&#162;" cx="8.60497" cy="8.60472" r="5.81395" fill="url(#paint0_linear_0_7)"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_7" x1="-1.7721" y1="3.84856" x2="3.30533" y2="16.4189" gradientUnits="userSpaceOnUse">
+<stop stop-color="#7AEE92"/>
+<stop offset="1" stop-color="#33BA5D"/>
+</linearGradient>
+</defs>
+</svg>
