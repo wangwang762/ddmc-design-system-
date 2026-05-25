@@ -127,6 +127,24 @@ function 价格小({ value, unit }: { value: string; unit: string }) {
   )
 }
 
+/** 价格 + 划线原价（泳道 / 新人专区商卡）*/
+function 价格含原价({ value, unit, 原价 }: { value: string; unit: string; 原价?: string }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+      <div style={{ display: 'flex', alignItems: 'baseline' }}>
+        <span style={{ fontSize: 10, lineHeight: '12px', color: accentRed.primary, fontFamily: 'DdmcSans, sans-serif', fontWeight: 700 }}>¥</span>
+        <span style={{ fontSize: 14, lineHeight: '14px', color: accentRed.primary, fontFamily: 'DdmcSans, sans-serif', fontWeight: 700 }}>{value}</span>
+        <span style={{ fontSize: 10, lineHeight: '12px', color: dark.black50, fontFamily: 'PingFang SC, sans-serif', whiteSpace: 'nowrap' }}>{unit}</span>
+      </div>
+      {原价 && (
+        <span style={{ fontSize: 10, lineHeight: '10px', color: '#808080', fontFamily: 'PingFang SC, sans-serif', textDecoration: 'line-through' }}>
+          ¥{原价}
+        </span>
+      )}
+    </div>
+  )
+}
+
 /** 营销标签行：绿色底 / 粉红底 / 省 */
 function 营销标签行({ tags, showExpand = false }: { tags: 营销标签[]; showExpand?: boolean }) {
   if (!tags.length) return null
@@ -135,6 +153,7 @@ function 营销标签行({ tags, showExpand = false }: { tags: 营销标签[]; s
     if (tag.类型 === '绿色底') {
       return (
         <div key={i} style={{
+          display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center',
           backgroundColor: accentGreen.opacity5,
           border: `0.5px solid ${accentGreen.opacity30}`,
           borderRadius: 3,
@@ -150,6 +169,7 @@ function 营销标签行({ tags, showExpand = false }: { tags: 营销标签[]; s
     if (tag.类型 === '粉红底') {
       return (
         <div key={i} style={{
+          display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center',
           backgroundColor: accentRed.opacity5,
           border: `0.5px solid ${accentRed.opacity30}`,
           borderRadius: 3,
@@ -170,21 +190,20 @@ function 营销标签行({ tags, showExpand = false }: { tags: 营销标签[]; s
             borderRadius: '3px 0 0 3px',
             padding: '3px 2.5px',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
+            alignItems: 'flex-end',
+            justifyContent: 'center',
           }}>
             <span style={{
               fontSize: 11,
-              lineHeight: '10px',
+              lineHeight: '11px',
               color: light.white,
               fontFamily: 'PingFang SC, sans-serif',
               fontWeight: 500,
               width: 11,
-              height: 10,
-              display: 'block',
             }}>省</span>
           </div>
           <div style={{
+            display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center',
             border: `0.5px solid rgba(255,51,51,0.3)`,
             borderLeft: 'none',
             borderRadius: '0 3px 3px 0',
@@ -222,6 +241,7 @@ function 榜单横幅({ text }: { text: string }) {
       borderRadius: 4,
       display: 'inline-flex',
       alignItems: 'center',
+      alignSelf: 'flex-start',
     }}>
       <div style={{ display: 'flex', gap: 3, alignItems: 'center', paddingRight: 3 }}>
         <img src={rankTopSvg} alt="" style={{ width: 19.2, height: 16, flexShrink: 0 }} />
@@ -246,6 +266,7 @@ function 榜单标签({ text }: { text: string }) {
       borderRadius: 3,
       padding: '1px 3px',
       display: 'inline-flex',
+      alignSelf: 'flex-start',
     }}>
       <span style={{
         fontSize: 11,
@@ -296,6 +317,7 @@ export function 商品卡片({
   下单数,
   榜单横幅: rankBanner,
   榜单标签: rankTag,
+  原价,
   购物车badge,
   onClick,
   onCartClick,
@@ -357,45 +379,6 @@ export function 商品卡片({
     )
   }
 
-  // ── 单列定高商卡 ─────────────────────────────────────────────
-  if (布局 === '单列定高') {
-    return (
-      <div
-        className={className}
-        onClick={onClick}
-        style={{
-          backgroundColor: light.white,
-          display: 'flex',
-          gap: 9,
-          alignItems: 'flex-start',
-          padding: '9px 12px',
-          borderBottom: `0.5px solid ${dark.black10}`,
-          cursor: onClick ? 'pointer' : undefined,
-        }}
-      >
-        <div style={{ width: 90, height: 90, flexShrink: 0, borderRadius: 3, overflow: 'hidden' }}>
-          <img src={图片} alt={标题} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-        </div>
-
-        <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 3, alignSelf: 'stretch' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <标题行 标题前标签={titleLabels} 标题={标题} fontWeight={400} />
-            {推荐理由 && (
-              <p style={{ fontSize: 11, lineHeight: '14px', color: dark.black50, fontFamily: 'PingFang SC, sans-serif', margin: 0 }}>
-                {推荐理由}
-              </p>
-            )}
-            {rankTag && <榜单标签 text={rankTag} />}
-          </div>
-
-          <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <价格大 value={价格} unit={单位} />
-            <购物车按钮 尺寸="22px" 按钮状态="默认" badge={购物车badge} onClick={onCartClick} />
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   // ── 双列商卡 ─────────────────────────────────────────────────
   if (布局 === '双列') {
@@ -412,7 +395,7 @@ export function 商品卡片({
           cursor: onClick ? 'pointer' : undefined,
         }}
       >
-        <div style={{ width: 182, height: 182, flexShrink: 0, overflow: 'hidden' }}>
+        <div style={{ width: '100%', aspectRatio: '1 / 1', overflow: 'hidden' }}>
           <img src={图片} alt={标题} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         </div>
 
@@ -455,8 +438,9 @@ export function 商品卡片({
     )
   }
 
-  // ── 双列定高商卡 ─────────────────────────────────────────────
-  if (布局 === '双列定高') {
+
+  // ── 泳道商卡 ─────────────────────────────────────────────────
+  if (布局 === '泳道') {
     return (
       <div
         className={className}
@@ -465,48 +449,51 @@ export function 商品卡片({
           backgroundColor: light.white,
           display: 'flex',
           flexDirection: 'column',
-          borderRadius: 9,
+          borderRadius: 6,
           overflow: 'hidden',
           cursor: onClick ? 'pointer' : undefined,
         }}
       >
-        {/* 图片区：底部渐变淡出，内容区轻微上叠 */}
-        <div style={{ position: 'relative', width: 182, height: 178, flexShrink: 0, marginBottom: -12 }}>
+        <div style={{ width: 112, height: 112, flexShrink: 0, overflow: 'hidden' }}>
           <img src={图片} alt={标题} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-          <div style={{
-            position: 'absolute',
-            bottom: 0, left: 0, right: 0,
-            height: 12,
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.8), #fff)',
-            backdropFilter: 'blur(2px)',
-          }} />
         </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 3, padding: 6 }}>
-          <标题行 标题前标签={titleLabels} 标题={标题} fontWeight={400} />
-          {(星级 || 利益点) && (
-            <div style={{ display: 'flex', gap: 3, alignItems: 'flex-start' }}>
-              {星级 && <五星标 />}
-              {利益点 && (
-                <p style={{
-                  flex: 1,
-                  fontSize: 11,
-                  lineHeight: '14px',
-                  color: dark.black50,
-                  fontFamily: 'PingFang SC, sans-serif',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                  margin: 0,
-                }}>
-                  {利益点}
-                </p>
-              )}
-            </div>
-          )}
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6, padding: 6 }}>
+          <标题行 标题前标签={titleLabels} 标题={标题} fontSize={12} lineHeight="14px" fontWeight={400} />
           {mktTags.length > 0 && <营销标签行 tags={mktTags} />}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <价格大 value={价格} unit={单位} />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
+            <价格含原价 value={价格} unit={单位} 原价={原价} />
+            <购物车按钮 尺寸="22px" 按钮状态="默认" badge={购物车badge} onClick={onCartClick} />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // ── 新人专区商卡 ─────────────────────────────────────────────
+  if (布局 === '新人专区商卡') {
+    return (
+      <div
+        className={className}
+        onClick={onClick}
+        style={{
+          backgroundColor: light.white,
+          display: 'flex',
+          flexDirection: 'column',
+          borderRadius: 6,
+          overflow: 'hidden',
+          cursor: onClick ? 'pointer' : undefined,
+        }}
+      >
+        {/* 图片区域：6px 上/左/右内边距，图片内嵌在白色背景中 */}
+        <div style={{ padding: '6px 6px 0 6px' }}>
+          <div style={{ width: 100, height: 100, borderRadius: 3, overflow: 'hidden' }}>
+            <img src={图片} alt={标题} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
+        </div>
+        <div style={{ height: 70, display: 'flex', flexDirection: 'column', gap: 6, padding: 6 }}>
+          <标题行 标题={标题} fontSize={12} lineHeight="14px" fontWeight={400} />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
+            <价格含原价 value={价格} unit={单位} 原价={原价} />
             <购物车按钮 尺寸="22px" 按钮状态="默认" badge={购物车badge} onClick={onCartClick} />
           </div>
         </div>
