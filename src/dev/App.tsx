@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { 商品卡片 } from '../components/商品卡片'
+import { 搜索框 } from '../components/搜索框'
 import { 按钮 } from '../components/按钮'
 import { 购物车按钮 } from '../components/购物车按钮'
 import { 加减号 } from '../components/加减号'
@@ -11,6 +12,7 @@ import { 步进器 } from '../components/步进器'
 import { 弹窗 } from '../components/弹窗'
 import { 底部导航, TabIcon首页, TabIcon分类, TabIcon吃什么, TabIcon榜单, TabIcon购物车, TabIcon我的, TabIconAI } from '../components/底部导航'
 import type { TabBarTab } from '../components/底部导航'
+import { 底部加购bar } from '../components/底部加购bar'
 
 const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <div className="flex flex-col gap-2">
@@ -317,6 +319,50 @@ export const App: React.FC = () => {
         </Row>
         <Row label="确认类 — 双按钮文字过长（垂直）">
           <按钮 尺寸="Small" 类型="Secondary" onClick={() => setDialog长文字(true)}>打开</按钮>
+        </Row>
+      </Section>
+
+      {/* ── 搜索框 ───────────────────────────────────── */}
+      <Section title="搜索框 (Search Bar)">
+        <Row label="通栏 — 居中 placeholder，无右侧">
+          <div style={{ width: 390, background: '#F5F5F5' }}>
+            <搜索框 状态="通栏" />
+          </div>
+        </Row>
+        <Row label="默认 + 右=icon（透明外层 + 白色搜索框）">
+          <div style={{ width: 390, background: '#E0E0E0' }}>
+            <搜索框 状态="默认" 右侧="icon" cartBadge={3} />
+          </div>
+        </Row>
+        <Row label="默认 + 右=文字">
+          <div style={{ width: 390, background: '#fff' }}>
+            <搜索框 状态="默认" 右侧="文字" />
+          </div>
+        </Row>
+        <Row label="默认 + 右=个人信息">
+          <div style={{ width: 390, background: '#fff' }}>
+            <搜索框 状态="默认" 右侧="个人信息" avatarLabel="主页" />
+          </div>
+        </Row>
+        <Row label="输入中 + 右=文字">
+          <div style={{ width: 390, background: '#fff' }}>
+            <搜索框 状态="输入中" 右侧="文字" value="快手c" />
+          </div>
+        </Row>
+        <Row label="搜索后 + 右=icon">
+          <div style={{ width: 390, background: '#fff' }}>
+            <搜索框 状态="搜索后" 右侧="icon" value="快手菜" cartBadge={1} />
+          </div>
+        </Row>
+        <Row label="搜索后 + 右=icon+icon">
+          <div style={{ width: 390, background: '#fff' }}>
+            <搜索框 状态="搜索后" 右侧="icon+icon" value="快手菜" cartBadge={2} />
+          </div>
+        </Row>
+        <Row label="地址 (右=-)">
+          <div style={{ width: 390, background: '#fff' }}>
+            <搜索框 状态="地址" 地址文字="上海市" placeholder="输入您的收货地址" />
+          </div>
         </Row>
       </Section>
 
@@ -638,6 +684,106 @@ export const App: React.FC = () => {
         ]}
         onMaskClick={() => setDialog长文字(false)}
       />
+
+      {/* ── 底部加购bar ───────────────────────────────── */}
+      <Section title="底部加购bar (Product Page Bottom Bar)">
+        <Row label="3图标 + 1按钮（最完整）">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              icons={[
+                { type: '购物车', onClick: () => {} },
+                { type: '收藏',   onClick: () => {} },
+                { type: 'AI助手', onClick: () => {} },
+              ]}
+              actions={[{ label: '加入购物车' }]}
+            />
+          </div>
+        </Row>
+        <Row label="2图标 + 1按钮">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              icons={[
+                { type: '购物车', badge: 5 },
+                { type: '收藏' },
+              ]}
+              actions={[{ label: '加入购物车' }]}
+            />
+          </div>
+        </Row>
+        <Row label="1图标 + 1按钮">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              icons={[{ type: '购物车' }]}
+              actions={[{ label: '立即购买' }]}
+            />
+          </div>
+        </Row>
+        <Row label="0图标 + 2按钮">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              actions={[
+                { label: '加入购物车', kind: 'secondary' },
+                { label: '立即购买',   kind: 'primary'   },
+              ]}
+            />
+          </div>
+        </Row>
+        <Row label="1图标 + 2按钮">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              icons={[{ type: '购物车' }]}
+              actions={[
+                { label: '加入购物车', kind: 'secondary' },
+                { label: '立即购买',   kind: 'primary'   },
+              ]}
+            />
+          </div>
+        </Row>
+        <Row label="3图标 + 2按钮（最多）">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              icons={[
+                { type: '购物车', badge: 99 },
+                { type: '收藏' },
+                { type: 'AI助手' },
+              ]}
+              actions={[
+                { label: '加入购物车', kind: 'secondary' },
+                { label: '立即购买',   kind: 'primary'   },
+              ]}
+            />
+          </div>
+        </Row>
+        <Row label="无 Home Indicator">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              icons={[{ type: '购物车' }, { type: '收藏' }]}
+              actions={[{ label: '加入购物车' }]}
+              showHomeIndicator={false}
+            />
+          </div>
+        </Row>
+        <Row label="按钮禁用">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              icons={[{ type: '购物车' }]}
+              actions={[{ label: '加入购物车', disabled: true }]}
+            />
+          </div>
+        </Row>
+        <Row label="AI助手角标隐藏">
+          <div style={{ width: 375, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <底部加购bar
+              icons={[
+                { type: '购物车' },
+                { type: '收藏' },
+                { type: 'AI助手', aiBadge: false },
+              ]}
+              actions={[{ label: '加入购物车' }]}
+            />
+          </div>
+        </Row>
+      </Section>
     </div>
   )
 }

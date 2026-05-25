@@ -54,6 +54,10 @@ export type { 弹窗Props, 弹窗按钮Config, 弹窗按钮种类 } from './comp
 export { 底部导航, TabIcon首页, TabIcon分类, TabIcon吃什么, TabIcon榜单, TabIcon购物车, TabIcon我的, TabIconAI } from './components/底部导航'
 export type { TabBarProps, TabBarTab, TabBarItem, TabDisplayType } from './components/底部导航'
 
+// ─── 底部加购bar ───────────────────────────────────────────────
+export { 底部加购bar } from './components/底部加购bar'
+export type { 底部加购barProps, 加购按钮Config, 加购图标Config, 加购按钮Kind, 加购图标Type } from './components/底部加购bar'
+
 // ─── 商品卡片相关 ─────────────────────────────────────────────
 export { 商品图标签单 } from './components/商品图标签-单'
 export type { 商品图标签单Props } from './components/商品图标签-单'
@@ -61,3 +65,7 @@ export type { 商品图标签单Props } from './components/商品图标签-单'
 // ─── 商品卡片 ──────────────────────────────────────────────────
 export { 商品卡片 } from './components/商品卡片'
 export type { 商品卡片Props, 商品卡片布局, 营销标签, 营销标签类型, 标题前标签 } from './components/商品卡片'
+
+// ─── 搜索框 ────────────────────────────────────────────────────
+export { 搜索框 } from './components/搜索框'
+export type { 搜索框Props, 搜索框状态, 搜索框右侧 } from './components/搜索框'
