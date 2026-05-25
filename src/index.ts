@@ -61,3 +61,15 @@ export type { 商品图标签单Props } from './components/商品图标签-单'
 // ─── 商品卡片 ──────────────────────────────────────────────────
 export { 商品卡片 } from './components/商品卡片'
 export type { 商品卡片Props, 商品卡片布局, 营销标签, 营销标签类型, 标题前标签 } from './components/商品卡片'
+
+// ─── Cell ──────────────────────────────────────────────────────
+export { GroupedRow, 活动条 } from './components/Cell'
+export type { GroupedRowProps, 活动条Props, Cell类型, 活动条尺寸, 活动条左侧类型 } from './components/Cell'
+
+// ─── 选项卡 ───────────────────────────────────────────────────
+export { 选项卡 } from './components/选项卡'
+export type { 选项卡Props, 选项卡Item, 选项卡方向, 横向列数 } from './components/选项卡'
+
+// ─── 分段筛选器 ────────────────────────────────────────────────
+export { 分段筛选器 } from './components/分段筛选器'
+export type { 分段筛选器Props, 分段筛选器Item, 分段排序状态 } from './components/分段筛选器'

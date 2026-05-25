@@ -11,6 +11,10 @@ import { 步进器 } from '../components/步进器'
 import { 弹窗 } from '../components/弹窗'
 import { 底部导航, TabIcon首页, TabIcon分类, TabIcon吃什么, TabIcon榜单, TabIcon购物车, TabIcon我的, TabIconAI } from '../components/底部导航'
 import type { TabBarTab } from '../components/底部导航'
+import { GroupedRow, 活动条 } from '../components/Cell'
+import { 选项卡 } from '../components/选项卡'
+import { 分段筛选器 } from '../components/分段筛选器'
+import type { 分段排序状态 } from '../components/分段筛选器'
 
 const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <div className="flex flex-col gap-2">
@@ -51,6 +55,16 @@ export const App: React.FC = () => {
   // 底部导航状态
   const [activeTab4, setActiveTab4] = useState<TabBarTab>('首页')
   const [activeTab5, setActiveTab5] = useState<TabBarTab>('吃什么')
+  // 分段筛选器状态
+  const [seg活动key, setSeg活动key] = useState('综合')
+  const [seg排序, setSeg排序] = useState<分段排序状态>('默认')
+  // 选项卡状态
+  const [tab二列, setTab二列] = useState('tab1')
+  const [tab三列, setTab三列] = useState('tab1')
+  const [tab四列, setTab四列] = useState('tab2')
+  const [tab五列, setTab五列] = useState('tab3')
+  const [tab滚动, setTab滚动] = useState('tab1')
+  const [tab竖向, setTab竖向] = useState('tab1')
 
   return (
     <div style={{ padding: '40px', backgroundColor: '#F5F5F5', minHeight: '100vh', fontFamily: 'PingFang SC, sans-serif' }}>
@@ -638,6 +652,216 @@ export const App: React.FC = () => {
         ]}
         onMaskClick={() => setDialog长文字(false)}
       />
+
+      {/* ── Cell ─────────────────────────────────────── */}
+      <Section title="Cell (Grouped Row + 活动条)">
+        <Row label="默认 — 标题 + 箭头">
+          <div style={{ width: 390, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <GroupedRow 主标题="收货地址" 右标题="上海市浦东新区" />
+            <GroupedRow 主标题="联系电话" 右标题="138 0000 0000" 右说明文案="已验证" />
+            <GroupedRow 主标题="发票信息" showArrow={false} />
+          </div>
+        </Row>
+        <Row label="默认 — 头像 + info圆 + 副标题 + 说明文案">
+          <div style={{ width: 390, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <GroupedRow
+              showAvatar
+              主标题="叮咚配送"
+              showInfo
+              副标题="次日达"
+              说明文案="每日8:00 - 22:00提供服务"
+              右副信息="预计"
+              右标题="明天9:00"
+            />
+          </div>
+        </Row>
+        <Row label="按钮附件">
+          <div style={{ width: 390, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <GroupedRow 主标题="领取优惠券" 说明文案="满49元可用，有效期至12月31日" 类型="按钮" 按钮文案="立即领取" />
+          </div>
+        </Row>
+        <Row label="开关附件">
+          <div style={{ width: 390, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <GroupedRow 主标题="新订单通知" 说明文案="开启后将收到配送员到达提醒" 类型="开关" 开关Active />
+            <GroupedRow 主标题="免打扰模式" 类型="开关" />
+          </div>
+        </Row>
+        <Row label="单选按钮附件">
+          <div style={{ width: 390, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <GroupedRow 主标题="今天 9:00 - 10:00" 说明文案="最快送达" 类型="单选按钮" 单选状态="选中" />
+            <GroupedRow 主标题="今天 12:00 - 13:00" 类型="单选按钮" 单选状态="未选中" />
+            <GroupedRow 主标题="今天 18:00 - 19:00" 类型="单选按钮" 单选状态="不可选" />
+          </div>
+        </Row>
+        <Row label="活动条 — 小+标签">
+          <div style={{ width: 390, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <活动条 尺寸="小" 标签文字="活动" 活动文字="满49元享最低7.5折换购，还差49元" />
+            <活动条 尺寸="小" 标签文字="满减" 活动文字="满49元享最低7.5折换购，还差49元仍然还差49元还差49元" />
+          </div>
+        </Row>
+        <Row label="活动条 — 大+标签">
+          <div style={{ width: 390, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
+            <活动条 尺寸="大" 标签文字="活动标签" 活动文字="仅需99元，可任选3件可任选3件" />
+            <活动条 尺寸="大" 标签文字="活动标签" 活动文字="仅需99元，可任选3件可任选3件仅需99元，可任选3件可任选3件仅需99元，可任选3件" />
+          </div>
+        </Row>
+      </Section>
+
+      {/* ── 分段筛选器 ────────────────────────────────────── */}
+      <Section title="分段筛选器 / Segmented Control">
+        <Row label="三列（综合/销量/价格↕）— 交互">
+          <div style={{ width: 390 }}>
+            <分段筛选器
+              items={[
+                { key: '综合', label: '综合' },
+                { key: '销量', label: '销量' },
+                { key: '价格', label: '价格', sortable: true },
+              ]}
+              activeKey={seg活动key}
+              sortOrder={seg排序}
+              onChange={(key, order) => { setSeg活动key(key); setSeg排序(order) }}
+            />
+          </div>
+        </Row>
+        <Row label="静态 — 综合 active">
+          <div style={{ width: 390 }}>
+            <分段筛选器
+              items={[{ key: '综合', label: '综合' }, { key: '销量', label: '销量' }, { key: '价格', label: '价格', sortable: true }]}
+              activeKey="综合"
+              sortOrder="默认"
+              onChange={() => {}}
+            />
+          </div>
+        </Row>
+        <Row label="静态 — 销量 active">
+          <div style={{ width: 390 }}>
+            <分段筛选器
+              items={[{ key: '综合', label: '综合' }, { key: '销量', label: '销量' }, { key: '价格', label: '价格', sortable: true }]}
+              activeKey="销量"
+              sortOrder="默认"
+              onChange={() => {}}
+            />
+          </div>
+        </Row>
+        <Row label="静态 — 价格 active 默认/升序/降序">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 390 }}>
+            <分段筛选器
+              items={[{ key: '综合', label: '综合' }, { key: '销量', label: '销量' }, { key: '价格', label: '价格', sortable: true }]}
+              activeKey="价格"
+              sortOrder="默认"
+              onChange={() => {}}
+            />
+            <分段筛选器
+              items={[{ key: '综合', label: '综合' }, { key: '销量', label: '销量' }, { key: '价格', label: '价格', sortable: true }]}
+              activeKey="价格"
+              sortOrder="升序"
+              onChange={() => {}}
+            />
+            <分段筛选器
+              items={[{ key: '综合', label: '综合' }, { key: '销量', label: '销量' }, { key: '价格', label: '价格', sortable: true }]}
+              activeKey="价格"
+              sortOrder="降序"
+              onChange={() => {}}
+            />
+          </div>
+        </Row>
+      </Section>
+
+      {/* ── 选项卡 ─────────────────────────────────────── */}
+      <Section title="选项卡 / Tabs">
+        <Row label="横向 — 二列">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <选项卡
+              列数="二列"
+              tabs={[
+                { key: 'tab1', label: '标签页一' },
+                { key: 'tab2', label: '标签页二' },
+              ]}
+              activeKey={tab二列}
+              onChange={setTab二列}
+            />
+          </div>
+        </Row>
+        <Row label="横向 — 三列">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <选项卡
+              列数="三列"
+              tabs={[
+                { key: 'tab1', label: '标签页一' },
+                { key: 'tab2', label: '标签页二' },
+                { key: 'tab3', label: '标签页三' },
+              ]}
+              activeKey={tab三列}
+              onChange={setTab三列}
+            />
+          </div>
+        </Row>
+        <Row label="横向 — 四列">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <选项卡
+              列数="四列"
+              tabs={[
+                { key: 'tab1', label: '综合' },
+                { key: 'tab2', label: '销量' },
+                { key: 'tab3', label: '价格' },
+                { key: 'tab4', label: '评价' },
+              ]}
+              activeKey={tab四列}
+              onChange={setTab四列}
+            />
+          </div>
+        </Row>
+        <Row label="横向 — 五列">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <选项卡
+              列数="五列"
+              tabs={[
+                { key: 'tab1', label: '推荐' },
+                { key: 'tab2', label: '热销' },
+                { key: 'tab3', label: '新品' },
+                { key: 'tab4', label: '价格' },
+                { key: 'tab5', label: '评价' },
+              ]}
+              activeKey={tab五列}
+              onChange={setTab五列}
+            />
+          </div>
+        </Row>
+        <Row label="横向 — 滚动 (overflow scroll)">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <选项卡
+              列数="滚动"
+              tabs={[
+                { key: 'tab1', label: '标签页一' },
+                { key: 'tab2', label: '标签页二' },
+                { key: 'tab3', label: '标签页三' },
+                { key: 'tab4', label: '标签页四' },
+                { key: 'tab5', label: '标签页五' },
+                { key: 'tab6', label: '标签页六' },
+                { key: 'tab7', label: '标签页七' },
+              ]}
+              activeKey={tab滚动}
+              onChange={setTab滚动}
+            />
+          </div>
+        </Row>
+        <Row label="竖向 (with content)">
+          <div style={{ width: 390, backgroundColor: '#fff' }}>
+            <选项卡
+              方向="竖向"
+              tabs={[
+                { key: 'tab1', label: '标签页一', content: <div style={{ padding: 16, color: '#1A1A1A', fontSize: 14 }}>标签一内容区</div> },
+                { key: 'tab2', label: '标签页二', content: <div style={{ padding: 16, color: '#1A1A1A', fontSize: 14 }}>标签二内容区</div> },
+                { key: 'tab3', label: '标签页三', content: <div style={{ padding: 16, color: '#1A1A1A', fontSize: 14 }}>标签三内容区</div> },
+                { key: 'tab4', label: '标签页四', content: <div style={{ padding: 16, color: '#1A1A1A', fontSize: 14 }}>标签四内容区</div> },
+                { key: 'tab5', label: '标签页五', content: <div style={{ padding: 16, color: '#1A1A1A', fontSize: 14 }}>标签五内容区</div> },
+              ]}
+              activeKey={tab竖向}
+              onChange={setTab竖向}
+            />
+          </div>
+        </Row>
+      </Section>
     </div>
   )
 }
