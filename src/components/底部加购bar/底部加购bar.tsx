@@ -19,42 +19,30 @@ import type { 底部加购barProps, 加购图标Config } from './types'
 import aiCircleSrc from '../底部导航/assets/ai-circle.svg'
 import aiTextSrc   from '../底部导航/assets/ai-text.svg'
 
-// ── 购物车图标 (SVG paths 1:1 from 购物车按钮 Figma 导出) ────
+// 图标库 SVG（从 Figma icon library 导出，node 14809:17873 / 14809:17874）
+import cartSrc from './assets/cart.svg'
+import starSrc from './assets/star.svg'
+
+// ── 购物车图标 (Cart2，Figma icon library 1:1) ───────────────
+// 内部图形 22.11×19.919，left:1px top:1.5px，图片略微溢出内框（inset 负值）
 const CartSvg = () => (
-  <svg
-    width="24" height="24" viewBox="0 0 24 24" fill="none"
-    style={{ display: 'block', flexShrink: 0 }}
-    aria-hidden
-  >
-    <path
-      d="M4.074 6.579H19.05c1.396 0 2.527 1.131 2.527 2.527 0 .274-.044.545-.131.804l-1.195 3.561c-.518 1.544-1.965 2.585-3.594 2.585H8.768c-1.877 0-3.47-1.373-3.749-3.228L3.93 5.572C3.745 4.335 2.682 3.42 1.431 3.42H1.08"
-      stroke={dark.black90} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-    />
-    <path
-      fillRule="evenodd" clipRule="evenodd"
-      d="M6.934 21.665a1.43 1.43 0 1 1 0-2.86 1.43 1.43 0 0 1 0 2.86Z"
-      fill={dark.black90}
-    />
-    <path
-      fillRule="evenodd" clipRule="evenodd"
-      d="M17.615 21.665a1.43 1.43 0 1 1 0-2.86 1.43 1.43 0 0 1 0 2.86Z"
-      fill={dark.black90}
-    />
-  </svg>
+  <div style={{ position: 'relative', width: 24, height: 24, flexShrink: 0 }}>
+    <div style={{ position: 'absolute', left: 1, top: 1.5, width: 22.11, height: 19.919 }}>
+      <div style={{ position: 'absolute', inset: '-3.77% -2.09% 0 -3.39%' }}>
+        <img src={cartSrc} alt="" aria-hidden style={{ display: 'block', width: '100%', height: '100%' }} />
+      </div>
+    </div>
+  </div>
 )
 
-// ── 收藏图标 (5点星形轮廓，24×24) ────────────────────────────
+// ── 收藏图标 (Star，Figma icon library 1:1) ──────────────────
+// 图标填满 inset 4.17%（≈1px 四边），有效区域 22×22 within 24×24
 const StarSvg = () => (
-  <svg
-    width="24" height="24" viewBox="0 0 24 24" fill="none"
-    style={{ display: 'block', flexShrink: 0 }}
-    aria-hidden
-  >
-    <path
-      d="M12 2.5L14.35 8.76L21.04 9.07L15.8 13.24L17.59 19.69L12 16L6.41 19.69L8.2 13.24L2.96 9.07L9.65 8.76L12 2.5Z"
-      stroke={dark.black90} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-    />
-  </svg>
+  <div style={{ position: 'relative', width: 24, height: 24, flexShrink: 0 }}>
+    <div style={{ position: 'absolute', inset: '4.17%' }}>
+      <img src={starSrc} alt="" aria-hidden style={{ position: 'absolute', inset: 0, display: 'block', width: '100%', height: '100%' }} />
+    </div>
+  </div>
 )
 
 // ── AI助手图标 (24×24，渐变圆 + AI符号 + 可选文字角标) ────────
