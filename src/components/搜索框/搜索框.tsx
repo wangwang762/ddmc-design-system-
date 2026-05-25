@@ -25,10 +25,10 @@ function 分类图标() {
 function 购物车图标({ badge, onClick }: { badge?: number; onClick?: () => void }) {
   return (
     <div
-      style={{ position: 'relative', width: 24, height: 24, flexShrink: 0, cursor: onClick ? 'pointer' : undefined }}
+      style={{ position: 'relative', width: 24, height: 24, flexShrink: 0, cursor: onClick ? 'pointer' : undefined, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       onClick={onClick}
     >
-      <img src={cartSvg} alt="购物车" style={{ width: 24, height: 24, display: 'block' }} />
+      <img src={cartSvg} alt="购物车" style={{ width: 24, height: 21, display: 'block' }} />
       {!!badge && badge > 0 && (
         <div style={{
           position: 'absolute', top: -3, right: -6,
@@ -102,7 +102,7 @@ export function 搜索框({
           }}>
             {地址文字}
           </span>
-          <img src={downSvg} alt="" style={{ width: 12, height: 12 }} />
+          <img src={downSvg} alt="" style={{ width: 9, height: 4 }} />
         </div>
       )
     }
@@ -112,7 +112,7 @@ export function 搜索框({
           style={{ width: 24, height: 24, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: onBack ? 'pointer' : undefined }}
           onClick={onBack}
         >
-          <img src={backSvg} alt="返回" style={{ width: 6, height: 14 }} />
+          <img src={backSvg} alt="返回" style={{ width: 6, height: 13 }} />
         </div>
       )
     }
@@ -140,8 +140,9 @@ export function 搜索框({
             }}
           />
           {!!value && (
-            <div style={{ width: 14, height: 14, flexShrink: 0, cursor: 'pointer' }} onClick={onClear}>
-              <img src={clearSvg} alt="清空" style={{ width: '100%', height: '100%' }} />
+            <div style={{ width: 14, height: 14, flexShrink: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={onClear}>
+              {/* clear.svg 是圆形+号，Figma 对其父容器加了 rotate(45deg) 使其变成 × */}
+              <img src={clearSvg} alt="清空" style={{ width: 14, height: 14, transform: 'rotate(45deg)' }} />
             </div>
           )}
         </div>
@@ -226,19 +227,15 @@ export function 搜索框({
     if (右侧 === '个人信息') {
       return (
         <div
-          style={{ position: 'relative', width: 24, height: 24, flexShrink: 0, cursor: onAvatarClick ? 'pointer' : undefined }}
+          style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, cursor: onAvatarClick ? 'pointer' : undefined }}
           onClick={onAvatarClick}
         >
           {avatarSrc
-            ? <img src={avatarSrc} alt="头像" style={{ width: 24, height: 24, borderRadius: '50%', objectFit: 'cover', display: 'block' }} />
-            : <div style={{ width: 24, height: 24, borderRadius: '50%', backgroundColor: '#C4C4C4' }} />
+            ? <img src={avatarSrc} alt="头像" style={{ width: 24, height: 24, borderRadius: '50%', objectFit: 'cover', display: 'block', flexShrink: 0 }} />
+            : <div style={{ width: 24, height: 24, borderRadius: '50%', backgroundColor: '#C4C4C4', flexShrink: 0 }} />
           }
           {avatarLabel && (
-            <span style={{
-              position: 'absolute', left: 30, top: 5,
-              fontSize: 12, lineHeight: '14px', color: dark.black90,
-              fontFamily: 'PingFang SC, sans-serif', whiteSpace: 'nowrap',
-            }}>
+            <span style={{ fontSize: 12, lineHeight: '14px', color: dark.black90, fontFamily: 'PingFang SC, sans-serif', whiteSpace: 'nowrap' }}>
               {avatarLabel}
             </span>
           )}
