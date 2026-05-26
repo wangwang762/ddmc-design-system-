@@ -37,11 +37,8 @@ function IconCell({ item }: { item: 金刚位Item }) {
           style={{
             width: 48,
             height: 48,
-            objectFit: 'cover',
-            objectPosition: 'top center',
+            objectFit: 'contain',
             display: 'block',
-            // squircle 裁切：若图片本身已有透明 squircle 形状可省略
-            clipPath: `path('${SQUIRCLE_48}')`,
           }}
         />
         {item.badge && (
