@@ -73,3 +73,11 @@ export type { 选项卡Props, 选项卡Item, 选项卡方向, 横向列数 } fro
 // ─── 分段筛选器 ────────────────────────────────────────────────
 export { 分段筛选器 } from './components/分段筛选器'
 export type { 分段筛选器Props, 分段筛选器Item, 分段排序状态 } from './components/分段筛选器'
+
+// ─── 标题栏 ────────────────────────────────────────────────────
+export { TitleBar } from './components/标题栏'
+export type { TitleBarProps, TitleBar左操作, TitleBar标题样式 } from './components/标题栏'
+
+// ─── 金刚位 ────────────────────────────────────────────────────
+export { 金刚位 } from './components/金刚位'
+export type { 金刚位Props, 金刚位Item } from './components/金刚位'

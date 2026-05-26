@@ -64,8 +64,8 @@ export function 分段筛选器({
       {items.map(item => {
         const isActive = item.key === activeKey
 
-        let upColor = dark.black30
-        let downColor = dark.black30
+        let upColor: string = dark.black30
+        let downColor: string = dark.black30
         if (isActive && item.sortable) {
           if (sortOrder === '默认') {
             upColor = accentGreen.primary

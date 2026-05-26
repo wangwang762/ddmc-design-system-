@@ -1,4 +1,16 @@
 import React, { useState } from 'react'
+import 蔬菜豆制品Img from '../components/金刚位/assets/蔬菜豆制品.png'
+import 肉禽蛋Img from '../components/金刚位/assets/肉禽蛋.png'
+import 水产海鲜Img from '../components/金刚位/assets/水产海鲜.png'
+import 水果鲜花Img from '../components/金刚位/assets/水果鲜花.png'
+import 乳品烘焙Img from '../components/金刚位/assets/乳品烘焙.png'
+import 熟食卤味Img from '../components/金刚位/assets/熟食卤味.png'
+import 快手菜Img from '../components/金刚位/assets/快手菜.png'
+import 速食冻品Img from '../components/金刚位/assets/速食冻品.png'
+import 粮油调味Img from '../components/金刚位/assets/粮油调味.png'
+import 酒水饮料Img from '../components/金刚位/assets/酒水饮料.png'
+import 火锅到家Img from '../components/金刚位/assets/火锅到家.png'
+import 个护清洁Img from '../components/金刚位/assets/个护清洁.png'
 import { 商品卡片 } from '../components/商品卡片'
 import { 按钮 } from '../components/按钮'
 import { 购物车按钮 } from '../components/购物车按钮'
@@ -15,6 +27,8 @@ import { GroupedRow, 活动条 } from '../components/Cell'
 import { 选项卡 } from '../components/选项卡'
 import { 分段筛选器 } from '../components/分段筛选器'
 import type { 分段排序状态 } from '../components/分段筛选器'
+import { TitleBar } from '../components/标题栏'
+import { 金刚位 } from '../components/金刚位'
 
 const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <div className="flex flex-col gap-2">
@@ -703,6 +717,104 @@ export const App: React.FC = () => {
           <div style={{ width: 390, border: '1px solid #E6E6E6', borderRadius: 4, overflow: 'hidden' }}>
             <活动条 尺寸="大" 标签文字="活动标签" 活动文字="仅需99元，可任选3件可任选3件" />
             <活动条 尺寸="大" 标签文字="活动标签" 活动文字="仅需99元，可任选3件可任选3件仅需99元，可任选3件可任选3件仅需99元，可任选3件" />
+          </div>
+        </Row>
+      </Section>
+
+      {/* ── 金刚位 ───────────────────────────────────────── */}
+      <Section title="金刚位 (Grid Navigation)">
+        <Row label="5列 × 2行（标准）">
+          <div style={{ width: 390 }}>
+            <金刚位
+              items={[
+                { key: '1', iconSrc: 蔬菜豆制品Img, label: '蔬菜豆制品' },
+                { key: '2', iconSrc: 肉禽蛋Img, label: '肉禽蛋' },
+                { key: '3', iconSrc: 水产海鲜Img, label: '水产海鲜', badge: '角标' },
+                { key: '4', iconSrc: 水果鲜花Img, label: '水果鲜花' },
+                { key: '5', iconSrc: 乳品烘焙Img, label: '乳品烘焙' },
+                { key: '6', iconSrc: 熟食卤味Img, label: '熟食卤味' },
+                { key: '7', iconSrc: 快手菜Img, label: '快手菜' },
+                { key: '8', iconSrc: 速食冻品Img, label: '速食冻品' },
+                { key: '9', iconSrc: 粮油调味Img, label: '粮油调味' },
+                { key: '10', iconSrc: 酒水饮料Img, label: '酒水饮料' },
+              ]}
+              每行列数={5}
+              activePage={0}
+              totalPages={2}
+            />
+          </div>
+        </Row>
+        <Row label="5列 × 2行（第2页）">
+          <div style={{ width: 390 }}>
+            <金刚位
+              items={[
+                { key: '1', iconSrc: 蔬菜豆制品Img, label: '蔬菜豆制品' },
+                { key: '2', iconSrc: 肉禽蛋Img, label: '肉禽蛋' },
+                { key: '3', iconSrc: 水产海鲜Img, label: '水产海鲜' },
+                { key: '4', iconSrc: 水果鲜花Img, label: '水果鲜花' },
+                { key: '5', iconSrc: 乳品烘焙Img, label: '乳品烘焙' },
+                { key: '6', iconSrc: 熟食卤味Img, label: '熟食卤味' },
+                { key: '7', iconSrc: 快手菜Img, label: '快手菜' },
+                { key: '8', iconSrc: 速食冻品Img, label: '速食冻品' },
+                { key: '9', iconSrc: 粮油调味Img, label: '粮油调味' },
+                { key: '10', iconSrc: 酒水饮料Img, label: '酒水饮料' },
+              ]}
+              每行列数={5}
+              activePage={1}
+              totalPages={2}
+            />
+          </div>
+        </Row>
+        <Row label="5列 × 3行">
+          <div style={{ width: 390 }}>
+            <金刚位
+              items={[
+                { key: '1', iconSrc: 蔬菜豆制品Img, label: '蔬菜豆制品' },
+                { key: '2', iconSrc: 肉禽蛋Img, label: '肉禽蛋' },
+                { key: '3', iconSrc: 水产海鲜Img, label: '水产海鲜', badge: '角标' },
+                { key: '4', iconSrc: 水果鲜花Img, label: '水果鲜花' },
+                { key: '5', iconSrc: 乳品烘焙Img, label: '乳品烘焙' },
+                { key: '6', iconSrc: 熟食卤味Img, label: '熟食卤味' },
+                { key: '7', iconSrc: 快手菜Img, label: '快手菜' },
+                { key: '8', iconSrc: 速食冻品Img, label: '速食冻品' },
+                { key: '9', iconSrc: 粮油调味Img, label: '粮油调味' },
+                { key: '10', iconSrc: 酒水饮料Img, label: '酒水饮料', badge: '新' },
+                { key: '11', iconSrc: 火锅到家Img, label: '火锅到家' },
+                { key: '12', iconSrc: 个护清洁Img, label: '个护清洁' },
+              ]}
+              每行列数={5}
+              activePage={0}
+              totalPages={3}
+            />
+          </div>
+        </Row>
+      </Section>
+
+      {/* ── 标题栏 ───────────────────────────────────────── */}
+      <Section title="标题栏 (TitleBar)">
+        <Row label="返回 + 标题 + 购物车 + 分享">
+          <div style={{ width: 390, border: '1px solid #E6E6E6' }}>
+            <TitleBar 标题="商品详情" show购物车 购物车Badge={3} show分享 onBack={() => {}} />
+          </div>
+        </Row>
+        <Row label="返回 + 标题（无右侧图标）">
+          <div style={{ width: 390, border: '1px solid #E6E6E6' }}>
+            <TitleBar 标题="收货地址" onBack={() => {}} />
+          </div>
+        </Row>
+        <Row label="close + 标题 + 右侧文案">
+          <div style={{ width: 390, border: '1px solid #E6E6E6' }}>
+            <TitleBar 左操作="close" 标题="选择规格" 右侧文案="明细" onBack={() => {}} />
+          </div>
+        </Row>
+        <Row label="用户信息 + 标题 + 小程序">
+          <div style={{ width: 390, border: '1px solid #E6E6E6' }}>
+            <TitleBar 左操作="用户信息" 用户名="叮咚用户" 标题="叮咚买菜" show小程序 />
+          </div>
+        </Row>
+        <Row label="无左操作 + 标题">
+          <div style={{ width: 390, border: '1px solid #E6E6E6' }}>
+            <TitleBar 左操作="无" 标题="首页" show购物车 购物车Badge={99} />
           </div>
         </Row>
       </Section>
