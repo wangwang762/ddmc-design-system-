@@ -1,15 +1,19 @@
 import React from 'react'
 import { 购物车按钮 } from '../购物车按钮'
-import { dark, light, accentGreen, accentRed, accentGold } from '../../tokens/colors'
+import { 标题前标签 as 标题前标签组件 } from '../标题前标签'
+import { dark, light, accentGreen, accentBlue, accentOrange, accentRed, accentGold } from '../../tokens/colors'
 import type { 商品卡片Props, 营销标签 } from './types'
 import rankTopSvg from './assets/rank-top.svg'
 import rankArrowSvg from './assets/rank-arrow.svg'
 import tagExpandSvg from './assets/tag-expand.svg'
+import tagGreenCardLeafSvg from './assets/tag-green-card-leaf.svg'
+import tagLowPriceIconSvg from './assets/tag-low-price-icon.svg'
+import tagFrenzyPriceSvg from './assets/tag-frenzy-price.svg'
 
 // Figma 专属值 — 与色板无精确对应，定义为局部常量
-const TITLE_LABEL_RED = '#FC5455'       // 标题前标签 红色（如"疯抢"）
-const TITLE_LABEL_DARK_RED = '#EA333E'  // 标题前标签 深红色（如"美麒麟"）
-const ORDER_COUNT_GOLD = '#B28E60'      // 下单数 / 榜单横幅文字金色
+const ORDER_COUNT_GOLD = '#B28E60'          // 下单数 / 榜单横幅文字金色
+const GREEN_CARD_GRAD  = 'linear-gradient(-43.36deg, #0C6C4E 0%, #179849 54.73%)'  // 绿卡返现左块渐变
+const FRENZY_GRAD      = 'linear-gradient(221.6deg, #FF6031 15.98%, #FF2E2E 92.52%)'  // 疯抢专享价背景渐变
 
 // ─── 内部子组件 ──────────────────────────────────────────────
 
@@ -27,11 +31,6 @@ function 标题行({
   lineHeight?: string
   fontWeight?: number
 }) {
-  const labelColorMap: Record<string, string> = {
-    red: TITLE_LABEL_RED,
-    'dark-red': TITLE_LABEL_DARK_RED,
-  }
-
   return (
     <p style={{
       fontSize,
@@ -42,24 +41,11 @@ function 标题行({
       wordBreak: 'break-word',
       margin: 0,
     }}>
-      {labels && labels.map((label, i) => (
-        <span key={i} style={{
-          display: 'inline-block',
-          backgroundColor: labelColorMap[label.颜色 ?? 'red'],
-          borderRadius: 3,
-          padding: '1.5px 3px',
-          fontSize: 10,
-          lineHeight: '11px',
-          color: light.white,
-          fontWeight: 500,
-          fontFamily: 'PingFang SC, sans-serif',
-          marginRight: 2,
-          verticalAlign: 'middle',
-          position: 'relative',
-          top: -1,
-        }}>
-          {label.文字}
-        </span>
+      {labels && labels.map((类型, i) => (
+        <React.Fragment key={i}>
+          <标题前标签组件 类型={类型} 尺寸="小" />
+          {' '}
+        </React.Fragment>
       ))}
       {title}
     </p>
@@ -150,39 +136,33 @@ function 营销标签行({ tags, showExpand = false }: { tags: 营销标签[]; s
   if (!tags.length) return null
 
   const renderTag = (tag: 营销标签, i: number) => {
-    if (tag.类型 === '绿色底') {
+    // ── 单色底标签（绿/粉/橙/蓝）── 结构相同，颜色不同
+    const solidBgConfig = {
+      '绿色底': { bg: accentGreen.opacity5, border: accentGreen.opacity30, text: accentGreen.primary },
+      '粉红底': { bg: accentRed.opacity5,   border: accentRed.opacity30,   text: accentRed.primary   },
+      '橙色底': { bg: accentOrange.opacity5, border: accentOrange.opacity30, text: accentOrange.primary },
+      '蓝色底': { bg: accentBlue.opacity5,  border: accentBlue.opacity30,  text: accentBlue.hover    },
+    } as const
+    if (tag.类型 in solidBgConfig) {
+      const { bg, border, text } = solidBgConfig[tag.类型 as keyof typeof solidBgConfig]
       return (
         <div key={i} style={{
           display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center',
-          backgroundColor: accentGreen.opacity5,
-          border: `0.5px solid ${accentGreen.opacity30}`,
+          backgroundColor: bg,
+          border: `0.5px solid ${border}`,
           borderRadius: 3,
           padding: '1px 3px',
           flexShrink: 0,
         }}>
-          <span style={{ fontSize: 11, lineHeight: '14px', color: accentGreen.primary, fontFamily: 'PingFang SC, sans-serif', whiteSpace: 'nowrap' }}>
+          <span style={{ fontSize: 11, lineHeight: '14px', color: text, fontFamily: 'PingFang SC, sans-serif', whiteSpace: 'nowrap' }}>
             {tag.文字}
           </span>
         </div>
       )
     }
-    if (tag.类型 === '粉红底') {
-      return (
-        <div key={i} style={{
-          display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center',
-          backgroundColor: accentRed.opacity5,
-          border: `0.5px solid ${accentRed.opacity30}`,
-          borderRadius: 3,
-          padding: '1px 3px',
-          flexShrink: 0,
-        }}>
-          <span style={{ fontSize: 11, lineHeight: '14px', color: accentRed.primary, fontFamily: 'PingFang SC, sans-serif', whiteSpace: 'nowrap' }}>
-            {tag.文字}
-          </span>
-        </div>
-      )
-    }
-    if (tag.类型 === '省') {
+
+    // ── 分段标签（省 / 折）── 左实心红块 + 右描边块
+    if (tag.类型 === '省' || tag.类型 === '折') {
       return (
         <div key={i} style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
           <div style={{
@@ -193,14 +173,9 @@ function 营销标签行({ tags, showExpand = false }: { tags: 营销标签[]; s
             alignItems: 'flex-end',
             justifyContent: 'center',
           }}>
-            <span style={{
-              fontSize: 11,
-              lineHeight: '11px',
-              color: light.white,
-              fontFamily: 'PingFang SC, sans-serif',
-              fontWeight: 500,
-              width: 11,
-            }}>省</span>
+            <span style={{ fontSize: 11, lineHeight: '11px', color: light.white, fontFamily: 'PingFang SC, sans-serif', fontWeight: 500, width: 11 }}>
+              {tag.类型}
+            </span>
           </div>
           <div style={{
             display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center',
@@ -216,6 +191,80 @@ function 营销标签行({ tags, showExpand = false }: { tags: 营销标签[]; s
         </div>
       )
     }
+
+    // ── 绿卡返现 ── 渐变绿左块(叶子图标) + 金色描边右块
+    if (tag.类型 === '绿卡返现') {
+      return (
+        <div key={i} style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+          <div style={{
+            backgroundImage: GREEN_CARD_GRAD,
+            borderRadius: '3px 0 0 3px',
+            width: 16,
+            height: 16,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}>
+            <img src={tagGreenCardLeafSvg} alt="" style={{ width: 11.314, height: 8.229, display: 'block' }} />
+          </div>
+          <div style={{
+            border: `0.5px solid ${accentGold.primary2}`,
+            borderLeft: 'none',
+            borderRadius: '0 3px 3px 0',
+            padding: '1px 3px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            overflow: 'hidden',
+          }}>
+            <span style={{ fontSize: 11, lineHeight: '14px', color: accentGold.brown2, fontFamily: 'PingFang SC, sans-serif', whiteSpace: 'nowrap' }}>
+              {tag.文字}
+            </span>
+          </div>
+        </div>
+      )
+    }
+
+    // ── 近N天低价 ── 粉底+闪电图标+红色文字
+    if (tag.类型 === '近N天低价') {
+      return (
+        <div key={i} style={{
+          display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center',
+          backgroundColor: accentRed.opacity5,
+          border: `0.5px solid ${accentRed.opacity30}`,
+          borderRadius: 3,
+          padding: '1px 3px',
+          flexShrink: 0,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <img src={tagLowPriceIconSvg} alt="" style={{ width: 8, height: 12, display: 'block', flexShrink: 0 }} />
+            <span style={{ fontSize: 11, lineHeight: '14px', color: accentRed.primary, fontFamily: 'PingFang SC, sans-serif', whiteSpace: 'nowrap' }}>
+              {tag.文字}
+            </span>
+          </div>
+        </div>
+      )
+    }
+
+    // ── 疯抢专享价 ── 渐变红底图片
+    if (tag.类型 === '疯抢专享价') {
+      return (
+        <div key={i} style={{
+          backgroundImage: FRENZY_GRAD,
+          borderRadius: 3.429,
+          height: 16,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '0 3.429px',
+          flexShrink: 0,
+        }}>
+          <img src={tagFrenzyPriceSvg} alt="疯抢专享价" style={{ width: 52.572, height: 11.094, display: 'block' }} />
+        </div>
+      )
+    }
+
     return null
   }
 

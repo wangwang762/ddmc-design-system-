@@ -2,11 +2,13 @@ import type { CSSProperties } from 'react'
 
 export interface 金刚位Item {
   key: string
-  /** 图标图片 URL（48×48，squircle 形状会自动裁切） */
+  /** 图标图片 URL（squircle 形状会自动裁切） */
   iconSrc: string
   label: string
   /** 右上角红色角标文字，如 "新" "角标" */
   badge?: string
+  /** 图标尺寸：48（默认，行1-2）或 38（行3小图标） */
+  iconSize?: 48 | 38
   onClick?: () => void
 }
 

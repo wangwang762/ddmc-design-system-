@@ -5,79 +5,55 @@
 // 注意：右侧文案 与 图标入口不可同时存在
 
 import React from 'react'
-import { dark, light, accentGreen } from '@/tokens/colors'
+import { dark, light } from '@/tokens/colors'
 import type { TitleBarProps } from './types'
+import iconBack from './assets/icon-back.svg'
+import iconClose from './assets/icon-close.svg'
+import iconShare from './assets/icon-share.svg'
+import iconCart from './assets/icon-cart.svg'
+import miniprogramBtn from './assets/miniprogram-btn.svg'
 
 const FONT = 'PingFang SC, sans-serif'
 
-// ── Icons ──────────────────────────────────────────────────────────────────────
+// ── Icons（像素级匹配 Figma 资源）──────────────────────────────────────────────
 
 function BackIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M15 19L8 12L15 5" stroke={dark.black90} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <div style={{ position: 'relative', width: 24, height: 24, flexShrink: 0 }}>
+      <img src={iconBack} alt="" style={{ position: 'absolute', width: 6, height: 14, left: 9, top: 5, display: 'block' }} />
+    </div>
   )
 }
 
 function CloseIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M18 6L6 18M6 6L18 18" stroke={dark.black90} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <div style={{ position: 'relative', width: 24, height: 24, flexShrink: 0 }}>
+      <img src={iconClose} alt="" style={{ position: 'absolute', width: 14, height: 14, left: 5, top: 5, display: 'block' }} />
+    </div>
   )
 }
 
 function CartIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M2 3H4.5L7 15H18.5L21 7H6.5" stroke={dark.black90} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="9" cy="19" r="1.5" fill={dark.black90} />
-      <circle cx="17" cy="19" r="1.5" fill={dark.black90} />
-    </svg>
+    <div style={{ position: 'relative', width: 24, height: 24, flexShrink: 0 }}>
+      <img src={iconCart} alt="" style={{ position: 'absolute', width: 22, height: 20, left: 1, top: 1.5, display: 'block' }} />
+    </div>
   )
 }
 
 function ShareIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M4 11v9a1 1 0 001 1h14a1 1 0 001-1v-9" stroke={dark.black90} strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M12 3v11M12 3L8.5 6.5M12 3L15.5 6.5" stroke={dark.black90} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <div style={{ position: 'relative', width: 24, height: 24, flexShrink: 0 }}>
+      <img src={iconShare} alt="" style={{ position: 'absolute', width: 19, height: 19, left: 2.5, top: 2.5, display: 'block' }} />
+    </div>
   )
 }
 
-// 小程序：87×32 绿色圆角胶囊按钮
+// 小程序：整体图片资源，87×32
 function MiniProgramButton({ onClick }: { onClick?: () => void }) {
   return (
-    <div
-      onClick={onClick}
-      style={{
-        width: 87,
-        height: 32,
-        borderRadius: 16,
-        border: `1px solid ${dark.black10}`,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 4,
-        paddingLeft: 10,
-        paddingRight: 10,
-        cursor: onClick ? 'pointer' : undefined,
-        flexShrink: 0,
-      }}
-    >
-      {/* WeChat mini program symbol */}
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <circle cx="9" cy="9" r="9" fill="#07C160" />
-        <path d="M5.5 7.8C5.5 6.2 6.8 5 8.5 5C9.3 5 10 5.3 10.6 5.8" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
-        <path d="M12.5 10.2C12.5 11.8 11.2 13 9.5 13C8.7 13 8 12.7 7.4 12.2" stroke="white" strokeWidth="1.2" strokeLinecap="round" />
-        <circle cx="11.5" cy="6.5" r="1.1" fill="white" />
-        <circle cx="6.5" cy="11.5" r="1.1" fill="white" />
-      </svg>
-      <span style={{ fontFamily: FONT, fontSize: 12, lineHeight: '14px', color: dark.black90, whiteSpace: 'nowrap' }}>
-        打开
-      </span>
+    <div onClick={onClick} style={{ cursor: onClick ? 'pointer' : undefined, flexShrink: 0, lineHeight: 0 }}>
+      <img src={miniprogramBtn} alt="打开小程序" style={{ width: 87, height: 32, display: 'block' }} />
     </div>
   )
 }

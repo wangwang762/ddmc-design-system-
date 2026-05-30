@@ -1,0 +1,14 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="&#228;&#189;&#142;&#228;&#187;&#183;icon" clip-path="url(#clip0_0_23)">
+<path id="Union" fill-rule="evenodd" clip-rule="evenodd" d="M5.05626 1.10316L3.64811 2.78242L1.07334 5.97944C0.881098 6.21814 1.01771 6.5755 1.32017 6.62507L3.01375 6.90268L2.17194 10.566C2.07781 10.9756 2.59822 11.2346 2.86828 10.9126L4.34077 9.15657L6.9146 5.9607C7.10705 5.72173 6.96989 5.364 6.66701 5.31495L4.83482 5.01824L5.75015 1.45982C5.85625 1.04733 5.32993 0.776792 5.05626 1.10316Z" fill="url(#paint0_linear_0_23)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_23" x1="7.79756" y1="10.8851" x2="7.70787" y2="-0.530189" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF3133"/>
+<stop offset="1" stop-color="#FFC1C2"/>
+</linearGradient>
+<clipPath id="clip0_0_23">
+<rect width="8" height="12" fill="white"/>
+</clipPath>
+</defs>
+</svg>

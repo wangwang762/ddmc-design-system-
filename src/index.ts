@@ -54,13 +54,17 @@ export type { 弹窗Props, 弹窗按钮Config, 弹窗按钮种类 } from './comp
 export { 底部导航, TabIcon首页, TabIcon分类, TabIcon吃什么, TabIcon榜单, TabIcon购物车, TabIcon我的, TabIconAI } from './components/底部导航'
 export type { TabBarProps, TabBarTab, TabBarItem, TabDisplayType } from './components/底部导航'
 
+// ─── 标题前标签 ────────────────────────────────────────────────
+export { 标题前标签 } from './components/标题前标签'
+export type { 标题前标签Props, 标题前标签类型 } from './components/标题前标签'
+
 // ─── 商品卡片相关 ─────────────────────────────────────────────
 export { 商品图标签单 } from './components/商品图标签-单'
 export type { 商品图标签单Props } from './components/商品图标签-单'
 
 // ─── 商品卡片 ──────────────────────────────────────────────────
 export { 商品卡片 } from './components/商品卡片'
-export type { 商品卡片Props, 商品卡片布局, 营销标签, 营销标签类型, 标题前标签 } from './components/商品卡片'
+export type { 商品卡片Props, 商品卡片布局, 营销标签, 营销标签类型 } from './components/商品卡片'
 
 // ─── Cell ──────────────────────────────────────────────────────
 export { GroupedRow, 活动条 } from './components/Cell'
@@ -81,3 +85,31 @@ export type { TitleBarProps, TitleBar左操作, TitleBar标题样式 } from './c
 // ─── 金刚位 ────────────────────────────────────────────────────
 export { 金刚位 } from './components/金刚位'
 export type { 金刚位Props, 金刚位Item } from './components/金刚位'
+
+// ─── Toast ─────────────────────────────────────────────────────
+export { Toast } from './components/Toast'
+export type { ToastProps, Toast类型 } from './components/Toast'
+
+// ─── 定位 ──────────────────────────────────────────────────────
+export { 定位 } from './components/定位'
+export type { 定位Props } from './components/定位'
+
+// ─── 叮咚特色品质之爱 ──────────────────────────────────────────
+export { 叮咚特色 } from './components/叮咚特色'
+export type { 叮咚特色Props, 品质之爱瓷片 } from './components/叮咚特色'
+
+// ─── 状态栏 ────────────────────────────────────────────────────
+export { 状态栏 } from './components/状态栏'
+export type { 状态栏Props } from './components/状态栏'
+
+// ─── 疯抢价标签 ────────────────────────────────────────────────
+export { 疯抢价标签 } from './components/疯抢价标签'
+export type { 疯抢价标签Props } from './components/疯抢价标签'
+
+// ─── 价格文字标签 ───────────────────────────────────────────────
+export { 价格文字标签 } from './components/价格文字标签'
+export type { 价格文字标签Props, 价格文字标签风格 } from './components/价格文字标签'
+
+// ─── 今日疯抢 ──────────────────────────────────────────────────
+export { 今日疯抢 } from './components/今日疯抢'
+export type { 今日疯抢Props, 疯抢商品 } from './components/今日疯抢'

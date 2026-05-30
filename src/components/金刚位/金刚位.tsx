@@ -17,6 +17,11 @@ const SQUIRCLE_48 =
 // ── 单个图标项 ─────────────────────────────────────────────────────────────────
 
 function IconCell({ item }: { item: 金刚位Item }) {
+  const size = item.iconSize ?? 48
+  const gap = size === 38 ? 6 : 8
+  // 第三行小图标用 Dark/Primary #333，标准行用 Dark/2 #4D4D4D
+  const labelColor = size === 38 ? '#333333' : '#4D4D4D'
+
   return (
     <div
       onClick={item.onClick}
@@ -25,18 +30,18 @@ function IconCell({ item }: { item: 金刚位Item }) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 8,
+        gap,
         cursor: item.onClick ? 'pointer' : undefined,
       }}
     >
       {/* 图标 + 角标 */}
-      <div style={{ position: 'relative', width: 48, height: 48, flexShrink: 0 }}>
+      <div style={{ position: 'relative', width: size, height: size, flexShrink: 0 }}>
         <img
           src={item.iconSrc}
           alt={item.label}
           style={{
-            width: 48,
-            height: 48,
+            width: size,
+            height: size,
             objectFit: 'contain',
             display: 'block',
           }}
@@ -78,7 +83,7 @@ function IconCell({ item }: { item: 金刚位Item }) {
           fontSize: 12,
           fontWeight: 400,
           lineHeight: '14px',
-          color: '#4D4D4D',
+          color: labelColor,
           textAlign: 'center',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
