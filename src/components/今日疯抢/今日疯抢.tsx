@@ -5,6 +5,9 @@ import React from 'react'
 import type { 今日疯抢Props, 疯抢商品 } from './types'
 import { 疯抢价标签 } from '../疯抢价标签'
 import { 价格文字标签 } from '../价格文字标签'
+import { 模块标题 } from '../模块标题'
+import flipCardImg from './assets/image 118.svg'
+import btnFlipImg  from './assets/btn-flip.png'
 
 const FONT = 'PingFang SC, sans-serif'
 
@@ -39,64 +42,45 @@ function CountDigit({ value }: { value: string }) {
 // ── 翻牌卡（第一项）──────────────────────────────────────────
 
 function FlipCard({
-  余额,
-  翻牌次数,
+  翻牌次数 = 3,
   onFlipClick,
 }: {
-  余额: string
-  翻牌次数: number
+  余额?: string
+  翻牌次数?: number
   onFlipClick?: () => void
 }) {
   return (
     <div style={{ flexShrink: 0, width: 80, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      {/* 卡片图形 */}
-      <div style={{
-        width: 68,
-        height: 68,
-        borderRadius: 10,
-        background: 'linear-gradient(145deg, #FFBFA3 0%, #FFD9CE 50%, #FFEDE8 100%)',
-        border: '0.5px solid rgba(255,90,50,0.12)',
-        boxShadow: '0 2px 10px rgba(255,70,30,0.12)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 4,
-      }}>
-        {/* 价格 */}
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 0 }}>
-          <span style={{ fontSize: 11, fontWeight: 700, color: '#FF3133', fontFamily: FONT, lineHeight: 1 }}>¥</span>
-          <span style={{ fontSize: 22, fontWeight: 800, color: '#FF3133', fontFamily: FONT, lineHeight: 1 }}>
-            {余额}
-          </span>
-        </div>
-        {/* 分隔线 */}
-        <div style={{ width: 30, height: 0.5, backgroundColor: '#FF3133', opacity: 0.35 }} />
-        <span style={{ fontSize: 10, color: '#FF6040', fontFamily: FONT, lineHeight: 1 }}>余额</span>
+      {/* 卡片切图：固定 64px 高，与右侧商品图对齐 */}
+      <div style={{ width: 68, height: 64, borderRadius: 8, overflow: 'hidden', flexShrink: 0 }}>
+        <img src={flipCardImg} alt="翻牌卡" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </div>
 
-      {/* 去翻牌按钮 */}
+      {/* 去翻牌按钮：marginTop:5 与右侧价格标签对齐 */}
       <button
         onClick={onFlipClick}
         style={{
           marginTop: 5,
-          background: 'linear-gradient(90deg, #FF6031 0%, #FF2E2E 100%)',
-          borderRadius: 11,
+          position: 'relative',
+          width: 51,
+          height: 16,
           border: 'none',
-          height: 20,
-          padding: '0 12px',
+          padding: 0,
           cursor: 'pointer',
+          background: 'none',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        <span style={{ fontSize: 11, fontWeight: 600, color: '#fff', fontFamily: FONT, lineHeight: 1 }}>
+        <img src={btnFlipImg} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', borderRadius: 8 }} />
+        <span style={{ position: 'relative', fontSize: 11, color: '#fff', fontFamily: 'PingFang SC, sans-serif', lineHeight: '14px', whiteSpace: 'nowrap' }}>
           去翻牌
         </span>
       </button>
 
-      <span style={{ fontSize: 10, color: '#B0B0B0', fontFamily: FONT, marginTop: 3, lineHeight: 1 }}>
+      {/* 今日N次翻牌：marginTop:3 与右侧划线原价对齐 */}
+      <span style={{ fontSize: 11, color: '#FF3133', fontFamily: FONT, marginTop: 3, lineHeight: '14px', whiteSpace: 'nowrap' }}>
         今日{翻牌次数}次翻牌
       </span>
     </div>
@@ -158,8 +142,8 @@ function 商品Item({ item }: { item: 疯抢商品 }) {
         />
       </div>
 
-      {/* 价格标签 */}
-      <div style={{ marginTop: 5 }}>
+      {/* 价格标签：display:flex 消除 inline-flex 的基线留白，保证与 FlipCard 按钮垂直对齐 */}
+      <div style={{ marginTop: 5, display: 'flex' }}>
         {类型 === '疯抢' && (
           <疯抢价标签 价格={item.price} />
         )}
@@ -219,18 +203,7 @@ export function 今日疯抢({
       }}>
         {/* 左侧：标题 + 场次 + 倒计时 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-          <span style={{
-            fontSize: 17,
-            fontWeight: 800,
-            fontFamily: FONT,
-            letterSpacing: -0.4,
-            lineHeight: '20px',
-            background: 'linear-gradient(90deg, #FF5F26 0%, #FF2E2E 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}>
-            今日疯抢
-          </span>
+          <模块标题 变体="今日疯抢" />
           <span style={{ fontSize: 12, fontWeight: 500, color: '#FF3133', fontFamily: FONT, lineHeight: 1 }}>
             {场次}
           </span>

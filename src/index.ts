@@ -113,3 +113,7 @@ export type { 价格文字标签Props, 价格文字标签风格 } from './compon
 // ─── 今日疯抢 ──────────────────────────────────────────────────
 export { 今日疯抢 } from './components/今日疯抢'
 export type { 今日疯抢Props, 疯抢商品 } from './components/今日疯抢'
+
+// ─── 模块标题 ──────────────────────────────────────────────────
+export { 模块标题 } from './components/模块标题'
+export type { 模块标题Props, 模块标题变体 } from './components/模块标题'

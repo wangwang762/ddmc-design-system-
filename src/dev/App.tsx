@@ -124,7 +124,7 @@ export const App: React.FC = () => {
   const [tab竖向, setTab竖向] = useState('tab1')
 
   return (
-    <div style={{ padding: '40px', backgroundColor: '#F5F5F5', minHeight: '100vh', fontFamily: 'PingFang SC, sans-serif' }}>
+    <div style={{ padding: '20px 16px', backgroundColor: '#F5F5F5', minHeight: 844, fontFamily: 'PingFang SC, sans-serif' }}>
 
       {/* ════════════════ 基础操作 ════════════════ */}
       <GroupHeader title="基础操作" />

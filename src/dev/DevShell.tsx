@@ -270,17 +270,34 @@ export function DevShell() {
         {sidebarOpen ? '‹' : '›'}
       </button>
 
-      {/* ── Content area ── */}
-      <div
-        ref={contentRef}
-        style={{
-          flex: 1,
-          overflowY: currentView === 'home' ? 'hidden' : 'auto',
-          height: '100vh',
-          background: currentView === 'home' ? '#fff' : '#F5F5F5',
-        }}
-      >
-        {currentView === 'home' ? <首页 /> : <App />}
+      {/* ── Canvas ── */}
+      <div style={{
+        flex: 1,
+        height: '100vh',
+        overflowY: 'auto',
+        background: '#DCDCDC',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        padding: '20px 0',
+      }}>
+        {/* 390×844 手机帧 */}
+        <div style={{
+          width: 390,
+          height: 844,
+          overflow: 'hidden',
+          background: '#fff',
+          boxShadow: '0 4px 32px rgba(0,0,0,0.18)',
+          flexShrink: 0,
+        }}>
+          <div
+            ref={contentRef}
+            className="scrollbar-none"
+            style={{ width: '100%', height: '100%', overflowY: 'auto' }}
+          >
+            {currentView === 'home' ? <首页 /> : <App />}
+          </div>
+        </div>
       </div>
     </div>
   )
