@@ -320,7 +320,7 @@ function Banner区块() {
 // ─────────────────────────────────────────────────────────
 // 主页面
 // ─────────────────────────────────────────────────────────
-export function 首页() {
+export function 首页({ onNavigate }: { onNavigate?: (tab: string) => void } = {}) {
   const [activeTab, setActiveTab] = useState<TabBarTab>('首页')
   const [scrolled, setScrolled] = useState(false)
   const [cartCount, setCartCount] = useState(3)
@@ -485,7 +485,7 @@ export function 首页() {
         <底部导航
           tabs={底部导航Tabs}
           activeTab={activeTab}
-          onTabChange={setActiveTab}
+          onTabChange={(tab) => { setActiveTab(tab); onNavigate?.(tab) }}
         />
       </div>
     </div>

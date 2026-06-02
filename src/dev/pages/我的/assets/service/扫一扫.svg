@@ -1,0 +1,6 @@
+<svg  width="21.5" height="19.5" overflow="hidden" style="display: block;" viewBox="0 0 21.5 19.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Scanner">
+<path id="Rectangle 75" d="M19.75 6.6V4.75C19.75 2.54086 17.9591 0.75 15.75 0.75H13.9M19.75 12.9V14.75C19.75 16.9591 17.9591 18.75 15.75 18.75H13.9M7.6 18.75H5.75C3.54086 18.75 1.75 16.9591 1.75 14.75V12.9M1.75 6.6V4.75C1.75 2.54086 3.54086 0.75 5.75 0.75H7.6" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5" stroke-linecap="round"/>
+<path id="Line" d="M20.75 9.75L0.75 9.75" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

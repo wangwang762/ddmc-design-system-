@@ -1,0 +1,8 @@
+<svg width="19.5" height="19.75" overflow="hidden" style="display: block;" viewBox="0 0 19.5 19.75" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Receipt">
+<path id="Rectangle 2" d="M1.75 0.75H17.75V17.8096C17.75 18.6225 16.8317 19.0957 16.1697 18.6241L14.2806 17.2781C13.9581 17.0483 13.5303 17.0304 13.1898 17.2326L10.7711 18.6687C10.1417 19.0425 9.35835 19.0425 8.72892 18.6687L6.31021 17.2326C5.96968 17.0304 5.54192 17.0483 5.21939 17.2781L3.33027 18.6241C2.66829 19.0957 1.75 18.6225 1.75 17.8096V0.75Z" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5"/>
+<path id="Line" d="M5.75 6.75H12.75" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Line_2" d="M0.75 0.75H18.75" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Line_3" d="M5.75 10.75H12.75" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

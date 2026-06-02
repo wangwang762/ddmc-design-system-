@@ -1,0 +1,14 @@
+<svg  width="21.5" height="20.75" overflow="hidden" style="display: block;" viewBox="0 0 21.5 20.75" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Wallet">
+<path id="Rectangle" d="M6.25 12.3C6.25 10.7536 7.5036 9.5 9.05 9.5H20.25V17.1667C20.25 18.4553 19.2053 19.5 17.9167 19.5H6.25V12.3Z" fill="url(#paint0_linear_0_1896)"/>
+<rect id="Rectangle 2" x="0.75" y="4" width="20" height="16" rx="5" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5"/>
+<path id="Rectangle 4" d="M17.75 4.5C17.75 2.20171 15.6068 0.504279 13.3696 1.03068L4.6048 3.09299C2.34623 3.62442 0.75 5.63982 0.75 7.96007V11" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5"/>
+<path id="Rectangle 3" d="M13.75 12C13.75 10.6193 14.8693 9.5 16.25 9.5H20.75V14.5H16.25C14.8693 14.5 13.75 13.3807 13.75 12Z" stroke="var(--stroke-0, #1A1A1A)" stroke-width="1.5"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_1896" x1="6.25" y1="10.3333" x2="21.2521" y2="12.4725" gradientUnits="userSpaceOnUse">
+<stop offset="0.00165481" stop-color="#F8FFE2"/>
+<stop offset="1" stop-color="#D3FFE3"/>
+</linearGradient>
+</defs>
+</svg>

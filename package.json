@@ -43,5 +43,8 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.4.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-darwin-x64": "^4.60.4"
   }
 }

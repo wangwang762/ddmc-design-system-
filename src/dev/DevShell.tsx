@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { App } from './App'
 import { 首页 } from './pages/首页'
+import { 分类页 } from './pages/分类页'
+import { 购物车 } from './pages/购物车'
+import { 我的 } from './pages/我的'
 
 // ── Nav data ─────────────────────────────────────────────
 
@@ -21,7 +24,10 @@ const NAV_GROUPS: NavGroup[] = [
   {
     groupLabel: '页面预览',
     items: [
-      { id: 'page-home', label: '首页', type: 'page', pageKey: 'home' },
+      { id: 'page-home',     label: '首页',   type: 'page', pageKey: 'home' },
+      { id: 'page-category', label: '分类页', type: 'page', pageKey: 'category' },
+      { id: 'page-cart',     label: '购物车', type: 'page', pageKey: 'cart' },
+      { id: 'page-mine',     label: '我的',   type: 'page', pageKey: 'mine' },
     ],
   },
   {
@@ -72,7 +78,7 @@ const NAV_GROUPS: NavGroup[] = [
 
 export function DevShell() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [currentView, setCurrentView] = useState<'home' | 'components'>('home')
+  const [currentView, setCurrentView] = useState<'home' | 'category' | 'cart' | 'mine' | 'components'>('home')
   const [selectedId, setSelectedId] = useState<string>('page-home')
   const [pendingScrollId, setPendingScrollId] = useState<string | null>(null)
   const [openGroups, setOpenGroups] = useState<Set<string>>(
@@ -80,10 +86,30 @@ export function DevShell() {
   )
   const contentRef = useRef<HTMLDivElement>(null)
 
+  const TAB_TO_VIEW: Record<string, { view: typeof currentView; id: string }> = {
+    '首页':   { view: 'home',       id: 'page-home' },
+    '分类':   { view: 'category',   id: 'page-category' },
+    '购物车': { view: 'cart',       id: 'page-cart' },
+    '我的':   { view: 'mine',       id: 'page-mine' },
+  }
+
+  const handleNavigate = (tab: string) => {
+    const target = TAB_TO_VIEW[tab]
+    if (!target) return
+    setCurrentView(target.view)
+    setSelectedId(target.id)
+    contentRef.current?.scrollTo({ top: 0 })
+  }
+
   const handleItemClick = (item: NavItem) => {
     setSelectedId(item.id)
     if (item.type === 'page') {
-      setCurrentView('home')
+      setCurrentView(
+        item.pageKey === 'category' ? 'category' :
+        item.pageKey === 'cart' ? 'cart' :
+        item.pageKey === 'mine' ? 'mine' :
+        'home'
+      )
       contentRef.current?.scrollTo({ top: 0 })
     } else {
       if (currentView !== 'components') {
@@ -295,7 +321,11 @@ export function DevShell() {
             className="scrollbar-none"
             style={{ width: '100%', height: '100%', overflowY: 'auto' }}
           >
-            {currentView === 'home' ? <首页 /> : <App />}
+            {currentView === 'home'     ? <首页     onNavigate={handleNavigate} /> :
+             currentView === 'category' ? <分类页   onNavigate={handleNavigate} /> :
+             currentView === 'cart'     ? <购物车   onNavigate={handleNavigate} /> :
+             currentView === 'mine'     ? <我的     onNavigate={handleNavigate} /> :
+             <App />}
           </div>
         </div>
       </div>
