@@ -117,3 +117,26 @@ export type { 今日疯抢Props, 疯抢商品 } from './components/今日疯抢'
 // ─── 模块标题 ──────────────────────────────────────────────────
 export { 模块标题 } from './components/模块标题'
 export type { 模块标题Props, 模块标题变体 } from './components/模块标题'
+
+// ─── Icon ──────────────────────────────────────────────────────
+export { Icon } from './components/Icon'
+export type { IconProps, IconName, IconSize } from './components/Icon'
+
+// ─── Menu ──────────────────────────────────────────────────────
+export { Menu } from './components/Menu'
+export type { MenuProps, MenuItem } from './components/Menu'
+
+// ─── Notification ──────────────────────────────────────────────
+export { Notification } from './components/Notification'
+export type { NotificationProps, Notification重要度, Notification左侧 } from './components/Notification'
+
+// ─── NoticeBar ─────────────────────────────────────────────────
+export { NoticeBar } from './components/NoticeBar'
+export type { NoticeBarProps, NoticeBar类型 } from './components/NoticeBar'
+
+// ─── iOS 系统组件 ───────────────────────────────────────────────
+export { 键盘 } from './components/键盘'
+export type { 键盘Props, 键盘模式 } from './components/键盘'
+
+export { HomeIndicator } from './components/HomeIndicator'
+export type { HomeIndicatorProps } from './components/HomeIndicator'

@@ -127,12 +127,15 @@ export const 弹窗: React.FC<弹窗Props> = ({
     )
   }
 
+  const portalRoot = document.getElementById('ddmc-portal-root') ?? document.body
+
   const dialog = (
     <div
       style={{
-        position: 'fixed', inset: 0, zIndex: 1000,
+        position: 'absolute', inset: 0, zIndex: 1000,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         backgroundColor: 'rgba(0,0,0,0.5)',
+        pointerEvents: 'auto',
       }}
       onClick={onMaskClick}
     >
@@ -236,5 +239,5 @@ export const 弹窗: React.FC<弹窗Props> = ({
     </div>
   )
 
-  return ReactDOM.createPortal(dialog, document.body)
+  return ReactDOM.createPortal(dialog, portalRoot)
 }

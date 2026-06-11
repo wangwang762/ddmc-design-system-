@@ -20,6 +20,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -p tsconfig.build.json && vite build",
+    "build:preview": "NO_PROXY='*' HTTP_PROXY='' HTTPS_PROXY='' http_proxy='' https_proxy='' vite build --config vite.preview.config.ts",
     "build:watch": "vite build --watch",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
@@ -38,7 +39,7 @@
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3",
     "vite": "^5.3.4",
-    "vite-plugin-dts": "^3.9.1"
+    "vite-plugin-dts": "^5.0.2"
   },
   "dependencies": {
     "clsx": "^2.1.1",

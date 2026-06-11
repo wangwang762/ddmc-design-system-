@@ -266,6 +266,7 @@ const TabItem: React.FC<TabItemProps> = ({ tab, selected, badge, displayType = '
         border: 'none',
         padding: 0,
         cursor: 'pointer',
+        overflow: 'visible',
       }}
     >
       {/* Icon + badge wrapper */}

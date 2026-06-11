@@ -44,14 +44,14 @@ import iconSpreadDot    from './分类页/assets/icon-spread-dot.svg'
 import allBtnOverlay    from './分类页/assets/all-btn-overlay.svg'
 
 // ── 商品图库 ─────────────────────────────────────────────────
-import 茼蒿Img       from '../../../商品图/信息流商品图/1.png'
-import 生蚝Img       from '../../../商品图/信息流商品图/4.png'
-import 白馒头Img     from '../../../商品图/自有品牌/良芯匠人/01.png'
-import 菠菜卷Img     from '../../../商品图/自有品牌/良芯匠人/02.png'
-import 沙拉Img       from '../../../商品图/自有品牌/叮咚好食光/01.png'
-import 麻酱凉皮Img   from '../../../商品图/自有品牌/叮咚好食光/02.png'
-import 鸡肉三明治Img from '../../../商品图/自有品牌/叮咚好食光/03.png'
-import 蛋饺Img       from '../../../商品图/自有品牌/蔡长青/01.png'
+import 茼蒿Img       from '../assets/商品图/信息流商品图/1.png'
+import 生蚝Img       from '../assets/商品图/信息流商品图/4.png'
+import 白馒头Img     from '../assets/商品图/自有品牌/良芯匠人/01.png'
+import 菠菜卷Img     from '../assets/商品图/自有品牌/良芯匠人/02.png'
+import 沙拉Img       from '../assets/商品图/自有品牌/叮咚好食光/01.png'
+import 麻酱凉皮Img   from '../assets/商品图/自有品牌/叮咚好食光/02.png'
+import 鸡肉三明治Img from '../assets/商品图/自有品牌/叮咚好食光/03.png'
+import 蛋饺Img       from '../assets/商品图/自有品牌/蔡长青/01.png'
 
 const FONT = 'PingFang SC, sans-serif'
 

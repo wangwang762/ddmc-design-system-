@@ -40,6 +40,10 @@ import { Toast } from '../components/Toast'
 import type { Toast类型 } from '../components/Toast'
 import { 定位 } from '../components/定位'
 import { 叮咚特色 } from '../components/叮咚特色'
+import { Icon } from '../components/Icon'
+import { NoticeBar } from '../components/NoticeBar'
+import { Notification } from '../components/Notification'
+import { Menu } from '../components/Menu'
 import tabImg1 from './pages/首页/assets/tab-img-1.png'
 import tabImg2 from './pages/首页/assets/tab-img-2.png'
 import tabImg3 from './pages/首页/assets/tab-img-3.png'
@@ -806,6 +810,99 @@ export const App: React.FC = () => {
         </Row>
       </Section>
 
+      {/* ── NoticeBar ─────────────────────────────────── */}
+      <Section title="NoticeBar（通知条）" id="sec-noticebar">
+        <Row label="一般 — 纯文字">
+          <div style={{ width: 390 }}>
+            <NoticeBar 类型="一般" 文案="您有一笔订单正在配送中，请保持手机畅通" 可关闭={false} />
+          </div>
+        </Row>
+        <Row label="一般 — 带 icon">
+          <div style={{ width: 390 }}>
+            <NoticeBar 类型="一般" 文案="系统升级通知，请及时更新" iconName="Notice" 可关闭={false} />
+          </div>
+        </Row>
+        <Row label="重要">
+          <div style={{ width: 390 }}>
+            <NoticeBar 类型="重要" 文案="您的绿卡即将到期，请及时续费" iconName="Bell" 可关闭={false} />
+          </div>
+        </Row>
+        <Row label="绿卡 — 带 CTA">
+          <div style={{ width: 390 }}>
+            <NoticeBar 类型="绿卡" 文案="绿卡已到期，续费享专属权益" 按钮文案="去续费" 可关闭={false} />
+          </div>
+        </Row>
+        <Row label="红包 — 带 CTA">
+          <div style={{ width: 390 }}>
+            <NoticeBar 类型="红包" 文案="您有红包未使用，下单立享优惠" 按钮文案="去下单" 可关闭={false} />
+          </div>
+        </Row>
+        <Row label="倒计时">
+          <div style={{ width: 390 }}>
+            <NoticeBar 类型="倒计时" 文案="疯抢活动" 倒计时="00:29:44.0" 按钮文案="去抢购" 可关闭={false} />
+          </div>
+        </Row>
+        <Row label="可关闭（默认）">
+          <div style={{ width: 390 }}>
+            <NoticeBar 类型="一般" 文案="点击右侧 × 可关闭此通知条" />
+          </div>
+        </Row>
+      </Section>
+
+      {/* ── Notification ──────────────────────────────────── */}
+      <Section title="Notification（提示条）" id="sec-notification">
+        <Row label="默认 — 纯文字（白色半透明）">
+          <div style={{ width: 372, background: 'linear-gradient(135deg,#4a9a5a,#2d7a4a)', padding: 12, borderRadius: 8 }}>
+            <Notification 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="默认 — icon">
+          <div style={{ width: 372, background: 'linear-gradient(135deg,#4a9a5a,#2d7a4a)', padding: 12, borderRadius: 8 }}>
+            <Notification 左侧="icon" iconName="Notice" 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="默认 — 标签（纯白底）">
+          <div style={{ width: 372, background: '#fff', padding: 12, borderRadius: 8, border: '1px solid #E6E6E6' }}>
+            <Notification 左侧="标签" 标签文字="温馨提示" 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="一般 — 灰底（用于白色容器内）">
+          <div style={{ width: 372 }}>
+            <Notification 重要度="一般" 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="一般 — icon">
+          <div style={{ width: 372 }}>
+            <Notification 重要度="一般" 左侧="icon" iconName="Notice" 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="一般 — 标签">
+          <div style={{ width: 372 }}>
+            <Notification 重要度="一般" 左侧="标签" 标签文字="温馨提示" 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="重要 — 浅红底">
+          <div style={{ width: 372 }}>
+            <Notification 重要度="重要" 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="重要 — icon">
+          <div style={{ width: 372 }}>
+            <Notification 重要度="重要" 左侧="icon" iconName="Danger" 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="重要 — 标签（红色）">
+          <div style={{ width: 372 }}>
+            <Notification 重要度="重要" 左侧="标签" 标签文字="温馨提示" 文案="提示文案，禁止换行" />
+          </div>
+        </Row>
+        <Row label="可关闭">
+          <div style={{ width: 372 }}>
+            <Notification 重要度="一般" 文案="点击右侧关闭此提示" 可关闭 />
+          </div>
+        </Row>
+      </Section>
+
       {/* ════════════════ 复杂组件 ════════════════ */}
       <GroupHeader title="复杂组件" />
 
@@ -1099,6 +1196,113 @@ export const App: React.FC = () => {
               activePage={0}
               totalPages={3}
             />
+          </div>
+        </Row>
+      </Section>
+
+      {/* ── Menu ───────────────────────────────────────────── */}
+      <Section title="Menu（操作菜单）" id="sec-menu">
+        <Row label="标准（分享 / 添加到小组件 / 规则）">
+          <Menu
+            items={[
+              { iconName: 'Share2',       label: '分享' },
+              { iconName: 'widget',       label: '添加到小组件' },
+              { iconName: 'Info circle',  label: '规则' },
+            ]}
+          />
+        </Row>
+        <Row label="两项（分享 / 规则）">
+          <Menu
+            items={[
+              { iconName: 'Share2',      label: '分享' },
+              { iconName: 'Info circle', label: '规则' },
+            ]}
+          />
+        </Row>
+        <Row label="自定义项目">
+          <Menu
+            items={[
+              { iconName: 'Edit 1',    label: '编辑' },
+              { iconName: 'Bookmark',  label: '收藏' },
+              { iconName: 'Trash can', label: '删除' },
+            ]}
+          />
+        </Row>
+        <Row label="叠在深色背景上（实际使用场景）">
+          <div style={{ position: 'relative', width: 390, height: 160, background: 'linear-gradient(135deg,#1a2a1a,#2d4a2d)', borderRadius: 8, overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: 8, right: 8 }}>
+              <Menu
+                items={[
+                  { iconName: 'Share2',      label: '分享' },
+                  { iconName: 'Info circle', label: '规则' },
+                ]}
+                arrowRight={10}
+              />
+            </div>
+          </div>
+        </Row>
+      </Section>
+
+      {/* ════════════════ 基础工具 ════════════════ */}
+      <GroupHeader title="基础工具" />
+
+      {/* ── Icon ──────────────────────────────────────────── */}
+      <Section title="Icon（图标）" id="sec-icon">
+        <Row label="四种尺寸 — 12 / 16 / 24 / 32">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            {([12, 16, 24, 32] as const).map(s => (
+              <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
+                <Icon name="Home" size={s} color="#1A1A1A" />
+                <span style={{ fontSize: 10, color: '#808080' }}>{s}px</span>
+              </div>
+            ))}
+          </div>
+        </Row>
+        <Row label="颜色继承 currentColor">
+          <div style={{ display: 'flex', gap: 12 }}>
+            {(['#1A1A1A', '#00B740', '#FF4D4F', '#FFB51C', '#B3B3B3'] as const).map(c => (
+              <Icon key={c} name="Heart" size={24} color={c} />
+            ))}
+          </div>
+        </Row>
+        <Row label="全部图标 24px（199 个）">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            {([
+              'Alarm clock','Bag 1','Bag 2','Bag 3','Balance','Bell','Book','Bookmark',
+              'Box 1','Box 2','Browser','Building','Burger','Calendar','Call','Call missed',
+              'Call silent','Calling','Camera','Cart','Cart2','Case','Category','Category2',
+              'Chart','Chart 1','Check 1','Check 2','Close','Close 1','Close 2','Cloud',
+              'Cloud download','Cloud upload','Coffee','Coins','Collapse','Color Palette',
+              'Comment','Compas','Component 1','Copy','Coupon 1','Coupon 2','Coupon 3',
+              'Credit card','Danger','Delivery','Dislike','Dislike-filled','Document',
+              'Document 2','Document 2 edit','Document 2 edit（阿拉伯）','Document 2（阿拉伯）',
+              'Document add','Document delite','Document（阿拉伯）','Down','Down 2',
+              'Down Left','Down Right','Down circle','Down left circle','Down right circle',
+              'Down square','Down square 2','Download 2','Edit 1','Edit 2','Expand','Eye',
+              'Filter','Fire','Flag','Folder','Gamepad','Gift','Graph','Headphones','Heart',
+              'Heartbeat','Hide','Home','Image','Info circle','Key','Laptop','Layers','Left',
+              'Left 2','Left circle','Left square','Left square 2','Lightning','Link',
+              'Loading','Location','Lock','Lock check','Lock open','Lock x','Login','Logout',
+              'Mail','Message circle','Message square','Message topic','Microphone','Minus',
+              'More','More circle','More square','Mouse','Music','Music plate',
+              'No sound (microphone)','Notice','Numcode','Oldschool gamepad','Order',
+              'Paperclip','Pause','Play','Plus','Pluses','Question circle','RPoint','Receipt',
+              'Receipt（阿拉伯）','Refresh','Refund','Rider','Right','Right 2','Right circle',
+              'Right square','Right square 2','Rocket','Sale','Save','Scale','Scanner',
+              'Screen','Search','Send','Settings','Share','Share2','Shield','Shield 1',
+              'Shield 2','Shield 3','Sorter','Spread','Star','Stop','Swap','Swap 2',
+              'Time Circle','Time square','Timer','Toggle left','Toggle right','Top','Top2',
+              'Trash can','Up','Up 2','Up Left','Up Right','Up circle','Up left circle',
+              'Up right circle','Up square','Up square 2','User','Users','Video','Video2',
+              'Vip','Volume down','Volume off 3','Volume off 4','Volume up','Wallet',
+              'Zoom in','Zoom out','circle-Check','circle-Close','circle-Minus','circle-Plus',
+              'iPhone','like','like-filled','locate','widget','Сalculator 1','Сalculator 2',
+            ] as const).map(name => (
+              <div key={name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, width: 52 }}>
+                <Icon name={name} size={24} color="#1A1A1A" />
+                <span style={{ fontSize: 8, color: '#808080', textAlign: 'center', lineHeight: '11px', wordBreak: 'break-all' }}>{name}</span>
+              </div>
+            ))}
           </div>
         </Row>
       </Section>

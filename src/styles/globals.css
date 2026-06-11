@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* DdmcSans — 叮咚专属价格字体，用于金额数字展示 */
+@font-face {
+  font-family: 'DdmcSans';
+  src: url('/src/assets/fonts/DdmcSans-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DdmcSans';
+  src: url('/src/assets/fonts/DdmcSans-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 @layer base {
   *,
   *::before,

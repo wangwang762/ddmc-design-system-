@@ -5,10 +5,11 @@
 
 import React from 'react'
 import type { 定位Props } from './types'
-import iconMapPin   from './assets/icon-map-pin.svg'
-import iconMessage  from './assets/icon-message.svg'
-import welfareOuter from './assets/welfare-outer1.svg'
-import welfareInner from './assets/welfare-inner.svg'
+import iconMapPin    from './assets/icon-map-pin.svg'
+import iconMessage   from './assets/icon-message.svg'
+import welfareOuter1 from './assets/welfare-outer1.svg'
+import welfareOuter2 from './assets/welfare-outer2.svg'
+import welfareInner  from './assets/welfare-inner.svg'
 
 export function 定位({
   地址 = '张建创业工坊',
@@ -63,27 +64,28 @@ export function 定位({
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         {/* 福利中心 icon */}
         <div style={{ position: 'relative', width: 24, height: 24, flexShrink: 0 }}>
-          {/* 外层渐变圆形 */}
+          {/* 第1层：外层渐变圆形（粉色底） */}
           <img
-            src={welfareOuter}
+            src={welfareOuter1}
             alt=""
             style={{ position: 'absolute', top: 0, left: 0, width: 24, height: 22.56 }}
           />
-          {/* 内层图形 */}
+          {/* 第2层：白色遮罩圆（切掉底部文字区域） */}
+          <img
+            src={welfareOuter2}
+            alt=""
+            style={{ position: 'absolute', top: 0, left: 0, width: 24, height: 21.09 }}
+          />
+          {/* 第3层：蔬菜内容图标 */}
           <img
             src={welfareInner}
             alt=""
             style={{ position: 'absolute', top: 2.88, left: 3, width: 19.11, height: 19.12 }}
           />
-          {/* 白色遮罩条（底部） */}
-          <div style={{
-            position: 'absolute', backgroundColor: '#fff',
-            height: 4.97, left: 6.45, top: 15.48, width: 11.66,
-          }} />
           {/* 免费菜文字 */}
           <span style={{
             position: 'absolute', left: '50%', transform: 'translateX(-50%)',
-            top: 14, fontSize: 7, color: '#3F292A',
+            top: 14.5, fontSize: 6.5, color: '#3F292A',
             fontFamily: '"Source Han Serif CN", "Noto Serif CJK SC", serif',
             fontWeight: 700, letterSpacing: -0.5, whiteSpace: 'nowrap',
           }}>

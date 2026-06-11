@@ -40,9 +40,11 @@ export function Toast({
   const hasIcon = 类型 !== '基础'
   const padding = hasIcon ? 24 : 18
 
+  const portalRoot = document.getElementById('ddmc-portal-root') ?? document.body
+
   return ReactDOM.createPortal(
     <div style={{
-      position: 'fixed',
+      position: 'absolute',
       inset: 0,
       display: 'flex',
       alignItems: 'center',
@@ -95,6 +97,6 @@ export function Toast({
         )}
       </div>
     </div>,
-    document.body,
+    portalRoot,
   )
 }
